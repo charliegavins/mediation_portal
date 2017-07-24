@@ -2,8 +2,8 @@ angular
   .module('angularAuthentication')
   .service('CurrentUserService', CurrentUserService);
 
-CurrentUserService.$inject = ['$rootScope', 'TokenService', 'User'];
-function CurrentUserService(TokenService, User, $rootScope) {
+CurrentUserService.$inject = ['TokenService', '$rootScope', 'User'];
+function CurrentUserService(TokenService, $rootScope, User) {
   const self = this;
 
   self.getUser = () => {
@@ -17,4 +17,10 @@ function CurrentUserService(TokenService, User, $rootScope) {
         });
     }
   };
+  self.removeUser = () => {
+  self.currentUser = null;
+  TokenService.removeToken();
+  $rootScope.$broadcast('loggedOut');
+};
+    self.getUser();
 }
