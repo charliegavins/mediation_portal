@@ -3,7 +3,7 @@
   "description": "An authenticated app with Angular and Express.",
   "main": "index.js",
   "authors": [
-    "alexpchin <alex@alexchin.co.uk>"
+    "charlie <cg@neonseed.com>"
   ],
   "license": "ISC",
   "homepage": "",
