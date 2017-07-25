@@ -2,38 +2,53 @@ module.exports = {
   index: casesIndex,
   show: casesShow,
   update: casesUpdate,
-  delete: casesDelete
+  delete: casesDelete,
+  new: casesNew
 };
 
-const User = require('../models/case');
+const Case = require('../models/case');
 
 function casesIndex(req, res) {
-  User.find((err, users) => {
+  Case
+  .find({})
+  .populate(['partnerA', 'partnerB'])
+  .exec((err, cases) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
-    return res.status(200).json(users);
+    return res.status(200).json(cases);
   });
 }
 
 function casesShow(req, res) {
-  User.findById(req.params.id, (err, user) => {
+  Case.findById(req.params.id)
+  .populate(['partnerA', 'partnerB'])
+  .exec((err, cases) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
-    if (!user) return res.status(404).json({ message: 'User not found.' });
-    return res.status(200).json(user);
+    if (!cases) return res.status(404).json({ message: 'Case  not found.' });
+    return res.status(200).json(cases);
   });
 }
 
 function casesUpdate(req, res) {
-  User.findByIdAndUpdate(req.params.id, req.body.user, { new: true },  (err, user) => {
+  Case.findByIdAndUpdate(req.params.id, req.body.case, { new: true },  (err, cases) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
-    if (!user) return res.status(404).json({ message: 'User not found.' });
-    return res.status(200).json(user);
+    if (!cases) return res.status(404).json({ message: 'case not found.' });
+    return res.status(200).json(cases);
   });
 }
 
 function casesDelete(req, res) {
-  User.findByIdAndRemove(req.params.id, (err, user) => {
+  Case.findByIdAndRemove(req.params.id, (err, cases) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
-    if (!user) return res.status(404).json({ message: 'User not found.' });
+    if (!cases) return res.status(404).json({ message: 'case not found.' });
     return res.sendStatus(204);
+  });
+}
+
+function casesNew(req, res){
+  Case.create(req.body, (err, cases) => {
+    if (err) return res.status(500).json({ message: 'Something went wrong.', error: err });
+
+    return res.status(201).json({
+      message: `Case added`, case: cases });
   });
 }

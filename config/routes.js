@@ -3,6 +3,7 @@ const router   = express.Router();
 
 const authentications = require('../controllers/authentications');
 const users           = require('../controllers/users');
+const cases           = require('../controllers/cases');
 
 router.route('/register')
   .post(authentications.register);
@@ -15,5 +16,13 @@ router.route('/users/:id')
   .get(users.show)
   .put(users.update)
   .delete(users.delete);
+
+router.route('/cases')
+  .get(cases.index)
+  .post(cases.new);
+router.route('/cases/:id')
+  .get(cases.show)
+  .put(cases.update)
+  .delete(cases.delete);
 
 module.exports = router;

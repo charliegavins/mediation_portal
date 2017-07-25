@@ -1,7 +1,9 @@
 const mongoose  = require('mongoose');
 
-const userSchema = new mongoose.Schema({
-  dateOfMarriage: { type: date, trim: true },
+const caseSchema = new mongoose.Schema({
+  partnerA: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  partnerB: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  dateOfMarriage: { type: Date, trim: true },
   dateOfCohabitation: { type: String, trim: true },
   dateOfSeparation: { type: String, trim: true },
   children: { type: Boolean},
