@@ -1,5 +1,5 @@
 angular
-  .module('angularAuthentication')
+  .module('afmPortal')
   .config(Router);
 
 Router.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider'];
@@ -44,9 +44,9 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
 .state('usersEdit', {
   url: '/users/:id/edit',
   templateUrl: '/js/views/users/edit.html',
-  controller: 'UsersEditCtrl'
-  controllerAs: 'usersEditCtrl'
+  controller: 'UsersEditCtrl',
+  controllerAs: 'usersEdit'
 });
 
-  $urlRouterProvider.otherwise('/');
+  // $urlRouterProvider.otherwise('/');
 }

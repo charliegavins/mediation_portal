@@ -1,5 +1,5 @@
 angular
-  .module('angularAuthentication')
+  .module('afmPortal')
   .controller('UsersIndexCtrl', UsersIndexCtrl);
 
 UsersIndexCtrl.$inject = ['User'];

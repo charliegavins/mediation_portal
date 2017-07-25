@@ -1,5 +1,5 @@
 angular
-  .module('angularAuthentication')
+  .module('afmPortal')
   .config(Interceptor);
 
 Interceptor.$inject = ['$httpProvider'];

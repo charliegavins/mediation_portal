@@ -1,5 +1,5 @@
 angular
-  .module('angularAuthentication')
+  .module('afmPortal')
   .service('TokenService', TokenService);
 
 TokenService.$inject = ['$window', 'jwtHelper'];
@@ -13,7 +13,7 @@ function TokenService($window, jwtHelper) {
   self.getToken = () => {
     return $window.localStorage.getItem('auth-token');
   };
-  
+
   self.removeToken = () => {
   $window.localStorage.clear();
 };

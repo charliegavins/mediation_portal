@@ -1,0 +1,33 @@
+<h2>Edit Personal Information</h2>
+<form ng-submit="usersEdit.update()">
+  <div class="form-group">
+    <input type="text" class="form-control" id="name" ng-model="usersEdit.user.firstName" placeholder="First Name">
+  </div>
+  <div class="form-group">
+    <input type="eventImage" class="form-control" id="eventImage" ng-model="usersEdit.user.lastName" placeholder="Last Name">
+  </div>
+  <div class="form-group">
+    <input type="middleNames" class="form-control" id="middleNames" ng-model="usersEdit.user.middleNames" placeholder="Middle Name(s)">
+  </div>
+  <div class="form-group">
+    <input type="date" class="form-control" id="DoB" ng-model="usersEdit.user.DoB" placeholder="Date of birth">
+  </div>
+
+  <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+  <div class="form-group">
+    <input type="address" class="form-control" id="address" ng-model="usersEdit.user.address" placeholder="Home Address">
+  </div>
+  <div class="form-group">
+    <input type="postcode" class="form-control" id="postcode" ng-model="usersEdit.user.postcode" placeholder="Postcode">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="mobileNumber" ng-model="usersEdit.user.mobileNumber" placeholder="Mobile number">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="otherTelNumber" ng-model="usersEdit.user.otherTelNumber" placeholder="Additional number">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="email" name="email" ng-model="usersEdit.user.email" placeholder="Email">
+  </div>
+  <input type="submit" class="btn btn-primary" value="Update">
+</form>

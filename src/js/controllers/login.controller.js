@@ -1,9 +1,9 @@
 angular
-  .module('angularAuthentication')
+  .module('afmPortal')
   .controller('LoginCtrl', LoginCtrl);
 
-  LoginCtrl.$inject = ['User', 'TokenService', 'CurrentUserService'];
-  function LoginCtrl(User, TokenService, CurrentUserService) {
+  LoginCtrl.$inject = ['User', 'TokenService', 'CurrentUserService', '$state'];
+  function LoginCtrl(User, TokenService, CurrentUserService, $state) {
     const vm = this;
 
     vm.login = () => {
@@ -11,6 +11,7 @@ angular
       .$promise
       .then(() => {
           CurrentUserService.getUser();
+          $state.go('home');
         }, err => {
           console.log(err);
         });

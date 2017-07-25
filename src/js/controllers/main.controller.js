@@ -1,5 +1,5 @@
 angular
-  .module('angularAuthentication')
+  .module('afmPortal')
   .controller('MainCtrl', MainCtrl);
 
 MainCtrl.$inject = ['$rootScope', '$state', 'CurrentUserService'];
@@ -8,7 +8,6 @@ const vm = this;
 
   $rootScope.$on('loggedIn', () => {
     vm.user = CurrentUserService.currentUser;
-      $state.go('home');
   });
   vm.logout = () => {
   CurrentUserService.removeUser();

@@ -1,5 +1,5 @@
 angular
-  .module('angularAuthentication')
+  .module('afmPortal')
   .service('CurrentUserService', CurrentUserService);
 
 CurrentUserService.$inject = ['TokenService', '$rootScope', 'User'];

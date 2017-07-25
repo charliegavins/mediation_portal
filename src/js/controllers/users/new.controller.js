@@ -2,15 +2,8 @@ angular
   .module('afmPortal')
   .controller('UsersNewCtrl', UsersNewCtrl);
 
-UsersNewCtrl.$inject = ['$http', 'API', '$state'];
-function UsersNewCtrl($http, API, $state){
+UsersNewCtrl.$inject = ['User'];
+function UsersNewCtrl(User){
   const vm = this;
-
-  vm.usersCreate = function usersCreate(){
-    return $http
-      .post(`${API}/users`, vm.user)
-      .then(() => {
-        $state.go('usersIndex');
-      });
-  };
+  vm.users = User.query();
 }

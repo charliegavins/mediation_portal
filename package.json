@@ -1,5 +1,5 @@
 {
-  "name": "angular-authentication-lesson",
+  "name": "afm-portal",
   "version": "1.0.0",
   "description": "An authenticated app with Angular and Express.",
   "main": "index.js",
@@ -56,6 +56,7 @@
     "express": "^4.14.0",
     "express-jwt": "^5.0.0",
     "jsonwebtoken": "^7.1.9",
+    "lodash": "^4.17.4",
     "mongoose": "4.1.1",
     "morgan": "^1.7.0",
     "validator": "^5.6.0"

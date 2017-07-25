@@ -1,5 +1,5 @@
 {
-  "name": "angular-authentication-lesson",
+  "name": "afm-portal",
   "description": "An authenticated app with Angular and Express.",
   "main": "index.js",
   "authors": [
@@ -19,7 +19,7 @@
     "angular-jwt": "^0.1.8",
     "angular-ui-router": "^0.3.2",
     "bootstrap": "^3.3.7",
-    "angular-resource": "^1.5.9"
+    "angular-resource": "^1.6.5"
   },
   "overrides": {
     "bootstrap": {

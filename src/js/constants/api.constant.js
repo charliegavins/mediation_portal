@@ -1,3 +1,3 @@
 angular
-  .module('angularAuthentication')
+  .module('afmPortal')
   .constant('API', `${window.location.origin}/api`);

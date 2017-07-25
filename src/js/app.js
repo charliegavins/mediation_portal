@@ -1,5 +1,5 @@
 angular
-  .module("angularAuthentication", [
+  .module("afmPortal", [
     "ui.router",
     "ngResource",
     "angular-jwt"

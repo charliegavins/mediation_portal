@@ -11,10 +11,10 @@ function authenticationsRegister(req, res){
   User.create(req.body, (err, user) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.', error: err });
 
-    const token = jwt.sign({ id: user.id, username: user.username }, config.secret, { expiresIn: 60*60*24 });
+    const token = jwt.sign({ id: user.id, email: user.email }, config.secret, { expiresIn: 60*60*24 });
 
     return res.status(201).json({
-      message: `Welcome ${user.username}!`,
+      message: `Welcome ${user.firstName}!`,
       user,
       token
     });
@@ -28,7 +28,7 @@ function authenticationsLogin(req, res){
       return res.status(401).json({ message: 'Unauthorized.' });
     }
 
-    const token = jwt.sign({ id: user.id, username: user.username }, config.secret, { expiresIn: 60*60*24 });
+    const token = jwt.sign({ id: user.id, email: user.email }, config.secret, { expiresIn: 60*60*24 });
 
     return res.status(200).json({
       message: 'Welcome back.',

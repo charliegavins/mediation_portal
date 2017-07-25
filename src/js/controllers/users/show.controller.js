@@ -2,25 +2,16 @@ angular
   .module('afmPortal')
   .controller('UsersShowCtrl', UsersShowCtrl);
 
-UsersShowCtrl.$inject = ['$http', 'API', '$state', '$stateParams'];
-function UsersShowCtrl($http, API, $state, $stateParams){
-  const vm = this;
-
+UsersShowCtrl.$inject = ['User', 'CurrentUserService', '$stateParams', '$http', 'API'];
+function UsersShowCtrl(User, CurrentUserService, $stateParams, $http, API){
+const vm = this;
+function usersShow(){
+  return $http
+    .get(`${API}/users/${$stateParams.id}`)
+    .then(response => {
+      vm.user = response.data;
+      console.log(vm.user.firstName);
+    });
+}
   usersShow();
-
-  function usersShow(){
-    return $http
-      .get(`${API}/users/${$stateParams.id}`)
-      .then(response => {
-        vm.user = response.data;
-      });
-  }
-
-  vm.delete = function usersDelete(){
-    return $http
-      .delete(`${API}/users/${$stateParams.id}`)
-      .then(() => {
-        $state.go('usersIndex');
-      });
-  };
 }

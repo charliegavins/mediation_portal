@@ -1,9 +1,9 @@
 angular
-  .module('angularAuthentication')
+  .module('afmPortal')
   .controller('RegisterCtrl', RegisterCtrl);
 
-  RegisterCtrl.$inject = ['User', 'CurrentUserService'];
-  function RegisterCtrl(User, CurrentUserService){
+  RegisterCtrl.$inject = ['User', 'CurrentUserService', '$state'];
+  function RegisterCtrl(User, CurrentUserService, $state){
     const vm = this;
 
     vm.register = () => {
@@ -11,6 +11,7 @@ angular
         .register(vm.user).$promise
         .then(() => {
           CurrentUserService.getUser();
+          $state.go('home');
         }, err => {
           console.log(err);
         });
