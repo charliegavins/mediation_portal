@@ -8,17 +8,19 @@ const userSchema = new mongoose.Schema({
   middleNames: { type: String, trim: true },
   DoB: { type: Date, trim: true },
   homeAddress: { type: String, trim: true },
-  postcode: { type: String, trim: true },
-  mobile: { type: String, trim: true },
+  postcode: { type: String, trim: true, lowercase: true },
+  mobileTel: { type: String, trim: true },
   otherTel: { type: String, trim: true },
   email: { type: String, unique: true, trim: true, required: true },
   passwordHash: { type: String, required: true },
-  solicitor: { type: Boolean },
+  hasSolicitor: { type: Boolean },
   solicitorName: { type: String, trim: true },
   solicitorCompanyName: { type: String, trim: true },
   solicitorEmail: { type: String, trim: true },
   solicitorTel: { type: String, trim: true },
-  solicitorAddress: { type: String, trim: true }
+  solicitorAddress: { type: String, trim: true },
+  activeCase: { type: Boolean },
+  case_ID: { type: String, trim: true }
 });
 
 userSchema

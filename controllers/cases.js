@@ -13,6 +13,7 @@ function casesIndex(req, res) {
   .find({})
   .populate(['partnerA', 'partnerB'])
   .exec((err, cases) => {
+    console.log(cases);
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     return res.status(200).json(cases);
   });
@@ -22,6 +23,7 @@ function casesShow(req, res) {
   Case.findById(req.params.id)
   .populate(['partnerA', 'partnerB'])
   .exec((err, cases) => {
+    console.log(cases);
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     if (!cases) return res.status(404).json({ message: 'Case  not found.' });
     return res.status(200).json(cases);
@@ -29,10 +31,10 @@ function casesShow(req, res) {
 }
 
 function casesUpdate(req, res) {
-  Case.findByIdAndUpdate(req.params.id, req.body.case, { new: true },  (err, cases) => {
+  Case.findByIdAndUpdate(req.params.id, req.body, { new: true },  (err, cases) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     if (!cases) return res.status(404).json({ message: 'case not found.' });
-    return res.status(200).json(cases);
+    return res.status(200).json({message: 'case updated', case: cases});
   });
 }
 

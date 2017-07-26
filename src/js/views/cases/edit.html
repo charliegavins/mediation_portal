@@ -1,33 +1,25 @@
-<h2>Edit Personal Information</h2>
-<form ng-submit="usersEdit.update()">
-  <div class="form-group">
-    <input type="text" class="form-control" id="name" ng-model="usersEdit.user.firstName" placeholder="First Name">
-  </div>
-  <div class="form-group">
-    <input type="eventImage" class="form-control" id="eventImage" ng-model="usersEdit.user.lastName" placeholder="Last Name">
-  </div>
-  <div class="form-group">
-    <input type="middleNames" class="form-control" id="middleNames" ng-model="usersEdit.user.middleNames" placeholder="Middle Name(s)">
-  </div>
-  <div class="form-group">
-    <input type="date" class="form-control" id="DoB" ng-model="usersEdit.user.DoB" placeholder="Date of birth">
-  </div>
+<h2>Edit Case</h2>
 
-  <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+<form ng-submit="casesEdit.update()">
   <div class="form-group">
-    <input type="address" class="form-control" id="address" ng-model="usersEdit.user.address" placeholder="Home Address">
+    <input type="text" class="form-control" id="caseID" ng-model="casesEdit.case.caseID" placeholder="First Name">
   </div>
   <div class="form-group">
-    <input type="postcode" class="form-control" id="postcode" ng-model="usersEdit.user.postcode" placeholder="Postcode">
+    <input type="text" class="form-control" id="partnerA" ng-model="casesEdit.cases.partnerA" placeholder="Partner A">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" id="mobileNumber" ng-model="usersEdit.user.mobileNumber" placeholder="Mobile number">
+    <input type="text" class="form-control" id="partnerB" ng-model="casesEdit.case.partnerB" placeholder="Partner B">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" id="otherTelNumber" ng-model="usersEdit.user.otherTelNumber" placeholder="Additional number">
+    <input type="date" class="form-control" id="dateOfMarriage" ng-model="casesEdit.case.dateOfMarriage" placeholder="Date of marriage">
   </div>
   <div class="form-group">
-    <input class="form-control" type="email" name="email" ng-model="usersEdit.user.email" placeholder="Email">
+    <input type="date" class="form-control" id="dateOfCohabitation" ng-model="casesEdit.case.dateOfCohabitation" placeholder="Date of cohabitation">
   </div>
-  <input type="submit" class="btn btn-primary" value="Update">
+  <div class="form-group">
+    <input type="date" class="form-control" id="dateOfSeparation" ng-model="casesEdit.case.dateOfSeparation" placeholder="Date of separation">
+  </div>
+  <div class="form-group">
+    <input type="checkbox" class="form-control" id="children" ng-model="casesEdit.case.children" placeholder="Children">
+  </div>
 </form>

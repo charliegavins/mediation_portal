@@ -46,7 +46,31 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
   templateUrl: '/js/views/users/edit.html',
   controller: 'UsersEditCtrl',
   controllerAs: 'usersEdit'
+})
+.state('casesIndex', {
+  url: '/cases',
+  templateUrl: '/js/views/cases/index.html',
+  controller: 'CasesIndexCtrl',
+  controllerAs: 'casesIndex'
+})
+.state('casesNew', {
+url: '/cases/new',
+templateUrl: '/js/views/cases/new.html',
+controller: 'CasesNewCtrl',
+controllerAs: 'casesNew'
+})
+.state('casesShow', {
+url: '/cases/:id',
+templateUrl: '/js/views/cases/show.html',
+controller: 'CasesShowCtrl',
+controllerAs: 'casesShow'
+})
+.state('casesEdit', {
+url: '/cases/:id/edit',
+templateUrl: '/js/views/cases/edit.html',
+controller: 'CasesEditCtrl',
+controllerAs: 'casesEdit'
 });
 
-  // $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/');
 }

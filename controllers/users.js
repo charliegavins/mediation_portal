@@ -8,14 +8,20 @@ module.exports = {
 const User = require('../models/user');
 
 function usersIndex(req, res) {
-  User.find((err, users) => {
+  User
+  .find({})
+  .populate('case_ID')
+  .exec((err, users) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     return res.status(200).json(users);
   });
 }
 
 function usersShow(req, res) {
-  User.findById(req.params.id, (err, user) => {
+  User
+  .findById(req.params.id)
+  .populate('case_ID')
+  .exec((err, user) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     if (!user) return res.status(404).json({ message: 'User not found.' });
     return res.status(200).json(user);
@@ -23,10 +29,10 @@ function usersShow(req, res) {
 }
 
 function usersUpdate(req, res) {
-  User.findByIdAndUpdate(req.params.id, req.body.user, { new: true },  (err, user) => {
+  User.findByIdAndUpdate(req.params.id, req.body, { new: true },  (err, user) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     if (!user) return res.status(404).json({ message: 'User not found.' });
-    return res.status(200).json(user);
+    return res.status(200).json({message: 'user updated', user: user});
   });
 }
 
