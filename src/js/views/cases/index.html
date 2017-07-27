@@ -1,8 +1,7 @@
 <h1>Cases</h1>
 <div class="media" ng-repeat="case in casesIndex.cases">
   <div class="media-body">
-    <h4 class="media-heading">{{ case.ID }}</h4>
-    <p>{{ case.partnerA.lastName }}</p>
-    <p>{{ case.partnerB.lastName }}</p>
+    <p>{{ case.caseID }} - {{ case.partnerA.firstName }} and {{ case.partnerB.firstName }}
+    <button class="btn btn-primary" ui-sref="casesEdit({ id: cases.case._id })">Edit</button></p>
   </div>
 </div>

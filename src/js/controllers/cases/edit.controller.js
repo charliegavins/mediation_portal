@@ -1,30 +1,36 @@
 angular
-  .module('afmPortal')
-  .controller('CasesEditCtrl', CasesEditCtrl);
+.module('afmPortal')
+.controller('CasesEditCtrl', CasesEditCtrl);
 
-CasesEditCtrl.$inject = ['$http', 'API', '$state', '$stateParams'];
-function CasesEditCtrl($http, API, $state, $stateParams){
+CasesEditCtrl.$inject = ['$timeout','$resource','Case','$http', 'API', '$state', '$stateParams'];
+function CasesEditCtrl($timeout, $resource, Case, $http, API, $state, $stateParams){
   const vm = this;
 
-  casesShow();
-
-  function casesShow(){
-    return $http
-      .get(`${API}/cases/${$stateParams.id}`)
-      .then(response => {
-        vm.case = response.data;
-        vm.case.dateOfMarriage = new Date(vm.case.dateOfMarriage);
-        vm.case.dateOfSeparation = new Date(vm.case.dateOfSeparation);
-        vm.case.dateOfCohabitation = new Date(vm.case.dateOfCohabitation);
-        console.log(vm.case);
+    Case
+      .show({id: $stateParams.id}).$promise
+      .then((data) => {
+        console.log(data);
+        //DRY UP??
+        data.dateOfMarriage = new Date(data.dateOfMarriage);
+        data.dateOfSeparation = new Date(data.dateOfSeparation);
+        data.dateOfCohabitation = new Date(data.dateOfCohabitation);
+        for (i=0; i<data.childrenInfo.length;i++){
+          data.childrenInfo[i].DoB = new Date(data.childrenInfo[i].DoB)
+        }
+        vm.case = data;
+      }, err => {
+        console.log(err);
       });
-  }
 
   vm.update = function casesUpdate(){
-    return $http
-      .put(`${API}/users/${vm.case._id}`, vm.case)
-      .then(() => {
-        $state.go('casesIndex');
-      });
+    Case
+    .update(vm.case).$promise
+    .then((data) => {
+      console.log(data);
+vm.updated = true;
+      $timeout(function() {vm.updated = false;}, 1500);
+    }, err => {
+      console.log(err);
+    });
   };
 }

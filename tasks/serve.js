@@ -11,7 +11,7 @@ const serve = () => {
     files: ['public/**/*.*'],
     browser: 'google chrome',
     port: 7000,
-    reloadDelay: 1000
+    reloadDelay: 1500
   });
 
   return nodemon({

@@ -2,19 +2,22 @@ angular
   .module('afmPortal')
   .controller('UsersEditCtrl', UsersEditCtrl);
 
-UsersEditCtrl.$inject = ['$http', 'API', '$state', '$stateParams'];
-function UsersEditCtrl($http, API, $state, $stateParams){
+UsersEditCtrl.$inject = ['User','$http', 'API', '$state', '$stateParams'];
+function UsersEditCtrl(User, $http, API, $state, $stateParams){
   const vm = this;
-
-vm.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
   usersShow();
 
+
+
   function usersShow(){
+    vm.user = User.query()
+    console.log(vm.user);
     return $http
       .get(`${API}/users/${$stateParams.id}`)
       .then(response => {
-        vm.user = response.data;
+        // vm.user = response.data;
+        // console.log(response.data);
       });
   }
 
