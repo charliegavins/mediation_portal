@@ -1,25 +1,51 @@
 <h2>Edit Case</h2>
 
 <form ng-submit="casesEdit.update()">
+  <p>case number</p>
   <div class="form-group">
     <input type="text" class="form-control" id="caseID" ng-model="casesEdit.case.caseID" placeholder="First Name">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" id="partnerA" ng-model="casesEdit.cases.partnerA" placeholder="Partner A">
+    <p>partner a</p>
+    <input type="text" class="form-control" id="partnerA" ng-model="casesEdit.case.partnerA.firstName" placeholder="Partner A">
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" id="partnerB" ng-model="casesEdit.case.partnerB" placeholder="Partner B">
+<p>partner b</p>
+    <input type="text" class="form-control" id="partnerB" ng-model="casesEdit.case.partnerB.firstName" placeholder="Partner B">
   </div>
   <div class="form-group">
+    <p>date of marriage</p>
     <input type="date" class="form-control" id="dateOfMarriage" ng-model="casesEdit.case.dateOfMarriage" placeholder="Date of marriage">
   </div>
   <div class="form-group">
+    <p>date of cohabitation</p>
     <input type="date" class="form-control" id="dateOfCohabitation" ng-model="casesEdit.case.dateOfCohabitation" placeholder="Date of cohabitation">
   </div>
   <div class="form-group">
+    <p>Date of separation</p>
     <input type="date" class="form-control" id="dateOfSeparation" ng-model="casesEdit.case.dateOfSeparation" placeholder="Date of separation">
   </div>
   <div class="form-group">
-    <input type="checkbox" class="form-control" id="children" ng-model="casesEdit.case.children" placeholder="Children">
+    <p>Has children?</p><input type="checkbox" class="form-control" id="children" ng-model="casesEdit.case.children" placeholder="Children">
   </div>
+  <div class="media" ng-repeat="child in casesEdit.case.childrenInfo">
+    <div class="media-body">
+      <div class="form-group">
+    <p>child {{$index+1}}</p>
+      <div class="form-group">
+        <input type="text" class="form-control" id="partnerB" ng-model="child.firstName" placeholder="Partner B">
+      </div>
+        <div class="form-group">
+      <input type="text" class="form-control" id="middleNames" ng-model="child.middleNames" placeholder="Middle Name(s)">
+    </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="lastName" ng-model="child.lastName" placeholder="Partner B">
+      </div>
+      <div class="form-group">
+        <input type="date" class="form-control" id="DoB" ng-model="child.DoB" placeholder="Date of birth">
+      </div>
+    </div>
+</div>
+</div>
+  <input type="submit" class="btn btn-primary" value="Update">
 </form>

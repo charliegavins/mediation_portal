@@ -21,6 +21,8 @@ const userSchema = new mongoose.Schema({
   solicitorAddress: { type: String, trim: true },
   activeCase: { type: Boolean },
   case_ID: { type: String, trim: true }
+},{
+  timestamps: true
 });
 
 userSchema

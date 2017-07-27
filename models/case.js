@@ -1,5 +1,6 @@
 const mongoose  = require('mongoose');
 
+
 const caseSchema = new mongoose.Schema({
   caseID: { type: String, trim: true, unique: true },
   partnerA: { type: mongoose.Schema.ObjectId, ref: 'User' },
@@ -9,6 +10,8 @@ const caseSchema = new mongoose.Schema({
   dateOfSeparation: { type: String, trim: true },
   children: { type: Boolean},
   childrenInfo: [{ firstName: String, lastName: String, middleNames: String, DoB: Date}]
+},{
+  timestamps: true
 });
 
 module.exports = mongoose.model('Case', caseSchema);
