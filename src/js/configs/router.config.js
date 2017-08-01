@@ -17,6 +17,12 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
     controller: 'RegisterCtrl',
     controllerAs: 'register'
   })
+  .state('registerLongForm', {
+    url: '/register-long-form',
+    templateUrl: '/js/views/registerLongForm.html',
+    controller: 'EditCtrl',
+    controllerAs: 'usersEdit'
+  })
   .state('login', {
     url: '/login',
     templateUrl: '/js/views/login.html',

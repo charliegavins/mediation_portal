@@ -11,7 +11,7 @@ angular
         .register(vm.user).$promise
         .then(() => {
           CurrentUserService.getUser();
-          $state.go('home');
+          $state.go('usersEdit');
         }, err => {
           console.log(err);
         });

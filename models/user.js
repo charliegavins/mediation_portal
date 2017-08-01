@@ -21,10 +21,285 @@ const userSchema = new mongoose.Schema({
   solicitorTel: { type: String, trim: true },
   solicitorAddress: { type: String, trim: true },
   activeCase: { type: Boolean },
-  case_ID: { type: String, trim: true }
+  case_ID: { type: String, trim: true },
+  financialInfo: {
+    income: {
+      selfEmployed: { type: Boolean},
+      occupation: { type: String},
+      employer: { type: String },
+      monthlyIncomeEmployed: {
+        salaryGross: { type: Number },
+        otherEarnings: { type: Number },
+        overTimeBonusComission: { type: Number },
+        nationalInsurance: { type: Number },
+        incomeTax: { type: Number },
+        pensionContributions: { type: Number },
+        otherDeduction: { type: Number },
+        totalDeductions: { type: Number },
+        netIncome: { type: Number }
+      },
+      monthlyIncomeSelfEmp: {
+        drawings: { type: Number }
+      },
+      otherIncome: {
+        childBenefit: { type: Number },
+        workingTaxCredit: { type: Number },
+        childTaxCredit: { type: Number },
+        childSupport: { type: Number },
+        dividendsAndInterest: { type: Number },
+        propertyIncome: { type: Number },
+        trustsSharesPension: { type: Number },
+        miscIncome: { type: Number },
+        totalOtherIncome: { type: Number },
+        likelyTax: { type: Number },
+      },
+      totalNetIncome: { type: Number },
+    },
+    expenditure: {
+      accomodation:{
+        mortgageRent: { type: Number },
+        pensionPremium: { type: Number },
+        buildingContentsInsurance: { type: Number },
+        maintenance: { type: Number }
+      },
+      financialCommitments:{
+        bankLoanRepayments: { type: Number },
+        hpFinanceHouses: { type: Number },
+        clubsMailOrderCatalogues: { type: Number },
+        creditStoreCards: { type: Number },
+        additionalPensionContributions: { type: Number },
+        otherInsurance: { type: Number },
+        investmentsSavings: { type: Number },
+        maintenance: { type: Number },
+      },
+      utilities:{
+        councilTax: { type: Number },
+        waterSewage: { type: Number },
+        gasOilFuel: { type: Number },
+        electricity: { type: Number },
+        telephone: { type: Number },
+        mobPhone: { type: Number },
+        tvLicense: { type: Number }
+      },
+      transport:{
+        vehicleRepayments: { type: Number },
+        insuranceRoadTax: { type: Number },
+        serviceRepairsMOT: { type: Number },
+        breakdownCover: { type: Number },
+        petrolParking: { type: Number },
+        publicTransport: { type: Number }
+      },
+      householdExpenses:{
+        foodMilkGeneral: { type: Number },
+        vetBills: { type: Number },
+        cleanerGardenWindow: { type: Number },
+        laundryClothesShoesRepairs: { type: Number },
+        tvRental: { type: Number },
+        satCableWebSubscription: { type: Number }
+      },
+      personalExpenses:{
+        clothes: { type: Number },
+        hairToiletariesCosmetics: { type: Number },
+        newsMagazines: { type: Number },
+        dentalOptician: { type: Number },
+        otherHealth: { type: Number },
+        tobaccoAlcohol: { type: Number },
+        workMeals: { type: Number },
+        presents: { type: Number },
+        charity: { type: Number },
+        stationaryPostage: { type: Number }
+      },
+      recreationalExpenses:{
+        holidaysOutings: { type: Number },
+        sportsHobbies: { type: Number },
+        cinemaTheatreConcertsVideo: { type: Number },
+        mealsOutEntertaining: { type: Number }
+      },
+      expenditureTotal: { type: Number },
+      childExpenditure: [{
+        childCare: {
+          babysitting: { type: Number },
+          nurseryPlaygroup: { type: Number },
+          childminderNanny: { type: Number }
+        },
+        recreation: {
+          clothesShoes: { type: Number },
+          clubsGroups: { type: Number },
+          equipmentLessons: { type: Number },
+          allowance: { type: Number }
+        },
+        education: {
+          schoolTravel: { type: Number },
+          schoolMeals: { type: Number },
+          schoolTrips: { type: Number },
+          schoolUniform: { type: Number },
+          schoolCollegeFees: { type: Number },
+          extraTuition: { type: Number },
+          higherEducationSupport: { type: Number }
+        },
+        personalCare: {
+          nappies: { type: Number },
+          toiletariesHaircut: { type: Number }
+        },
+        totalChildExpenditure: { type: Number }
+      }],
+      },
+    assetsAndLiabilities: {
+      familyHome: {
+        address: { type: String },
+        dateOfPurchase: { type: Date },
+        jointSoleOwnership: { type: String },
+        freeholdLeasehold: { type: String },
+        numberOfBedrooms: { type: Number },
+        purchasePrice: { type: Number },
+        dateOfValuation: { type: Date },
+        currentValue: { type: Number },
+        mortgageRemainder1: { type: Number },
+        mortgageType1: { type: String },
+        mortgageRemainder2: { type: Number },
+        mortgageType2: { type: String },
+        mortgagePenalties: { type: Number },
+        salesCosts: { type: Number },
+        netEquity: { type: Number }
+      },
+      otherProperty: [{
+        address: { type: String },
+        dateOfPurchase: { type: Date },
+        jointSoleOwnership: { type: String },
+        freeholdLeasehold: { type: String },
+        deposit: { type: Number },
+        purchasePrice: { type: Number },
+        dateOfValuation: { type: Date },
+        currentValue: { type: Number },
+        mortgageRemainder1: { type: Number },
+        mortgageType1: { type: String },
+        mortgageRemainder2: { type: Number },
+        mortgageType2: { type: String },
+        mortgagePenalties: { type: Number },
+        salesCosts: { type: Number },
+        netEquity: { type: Number }
+      }],
+      savingsSchemes: [{
+        nameOfCompany: { type: String },
+        typeOfScheme: { type: String },
+        jointOrSole: { type: String },
+        maturityDate: { type: Date },
+        maturityValue: { type: Number },
+        sumAssured: { type: Number },
+        surrTransFundVal: { type: Number },
+        date: { type: Date }
+      }],
+      savingsAccounts: [{
+        nameOfInstitution: { type: String },
+        lastFourAcctDigits: { type: Number },
+        typeOfAccount: { type: String },
+        jointOrSole: { type: String },
+        balance: { type: Number },
+        date: { type: Date }
+      }],
+      stocksSharesEtc: [{
+        nameOfHolding: { type: String },
+        typeOfHolding: { type: Number },
+        numberSize: { type: Number },
+        jointOrSole: { type: String },
+        currentValue: { type: Number },
+        date: { type: Date }
+      }],
+      nationalSavingsCerts: [{
+        nameOfIssue: { type: String },
+        typeOfHolding: { type: String },
+        numberSize: { type: Number },
+        jointOrSole: { type: String },
+        currentValue: { type: Number },
+        date: { type: Date }
+      }],
+      nationalSavingsBonds: [{
+        typeOfBond: { type: String },
+        bondholderNumber: { type: Number },
+        jointOrSole: { type: String },
+        currentValue: { type: Number },
+        date: { type: Date }
+      }],
+      insurancePolicies: [{
+        nameOfCompany: { type: String },
+        policyNumber: { type: Number },
+        policyType: { type: String },
+        lifeAssured: { type: Boolean },
+        estMaturityValue: { type: Number },
+        maturityDate: { type: Date },
+        surrenderValue: { type: Number}
+      }],
+      moneyOwedByOthers: [{
+        description: { type: String },
+        jointOrSole: { type: String },
+        amount: { type: Number }
+      }],
+      cash: [{
+        location: { type: String },
+        jointOrSole: { type: String },
+        amount: { type: Number },
+        currency: { type: String }
+      }],
+      vehicles: [{
+        description: { type: String },
+        jointOrSole: { type: String },
+        value: { type: Number }
+      }],
+      valuables: [{
+        description: { type: String },
+        jointOrSole: { type: String },
+        value: { type: Number }
+      }],
+      businessInterests: [{
+        nameOfCompany: { type: String },
+        description: { type: String },
+        basisOfValuation: { type: String },
+        outstandingAmountsDue: { type: String },
+        value: { type: Number }
+      }],
+      otherAssets: [{
+        typeOfAsset: { type: String },
+        value: { type: Number }
+      }],
+      liabilities: [{
+        description: { type: String },
+        owedPersonCompany: { type: String },
+        value: { type: Number }
+      }],
+      capitalGainsTax: [{
+        asset: { type: String },
+        tax: { type: Number }
+      }],
+      pensions: [{
+        name: { type: String },
+        address: { type: String },
+        nationalInsuranceNumber: { type: String },
+        pensionNumber: { type: String },
+        schemeType: { type: String },
+        dateCETVCalc: { type: String },
+        status: { type: String},
+        value: { type: Number }
+      }],
+      pensionsTotal: { type: Number },
+      newPartnerInfo: {
+        annualIncome: [{
+          natureOfIncome: { type: String },
+          value: { type: Number },
+          grossOrNet: { type: String }
+        }],
+        totalAnnualIncome: { type: Number },
+        assetsAndLiabilities: [{
+          item: { type: String },
+          value: { type: Number }
+        }],
+        totalAssetsAndLiabilities: { type: Number }
+      }
+    }
+  }
 },{
   timestamps: true
-});
+},
+{strict: false});
 
 userSchema
   .virtual('password')

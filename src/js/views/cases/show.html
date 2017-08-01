@@ -1,5 +1,16 @@
-<h2>{{ usersShow.user.firstName }} {{ usersShow.user.lastName }}</h2>
-<h2>{{ usersShow.user.email }}</h2>
-<hr>
-<button class="btn btn-primary" ui-sref="usersEdit({ id: users.user._id })">Edit</button>
-<button class="btn btn-warning" ng-click="users.delete()">Delete</button>
+<h2>{{ casesShow.case.caseID}}</h2>
+<p>Partner A: {{ casesShow.case.partnerA.firstName }} {{ casesShow.case.partnerA.lastName }}</p>
+<p>Partner B: {{ casesShow.case.partnerB.firstName }} {{ casesShow.case.partnerB.lastName }}</p>
+<p>Date Of Marriage: {{ casesShow.case.dateOfMarriagee }}</p>
+<p>Date Of Cohabitaiton: {{ casesShow.case.dateOfCohabitation }}</p>
+<p>Date Of Separation: {{ casesShow.case.dateOfSeparation }}</p>
+<p>Children: {{ casesShow.case.children }}</p>
+<div class="media" ng-repeat="child in casesShow.case.childrenInfo">
+  <p>child {{$index+1}}</p>
+  <p>{{ child.firstName}}</p>
+  <p>{{ child.middleNames}}</p>
+  <p>{{ child.lastName}}</p>
+  <p>{{ child.DoB }}</p>
+</div>
+<a ui-sref="casesEdit({ id: casesShow.case._id })">edit</a>
+<button class="btn btn-warning" ng-click="casesShow.delete(casesShow.case)">Delete</button>

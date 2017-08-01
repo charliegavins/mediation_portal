@@ -5,5 +5,13 @@ angular
 CasesIndexCtrl.$inject = ['Case'];
 function CasesIndexCtrl(Case){
   const vm = this;
-  vm.cases = Case.query();
+
+  Case
+    .query().$promise
+    .then((data) => {
+      vm.cases = data;
+    }, err => {
+      console.log(err);
+    });
+
 }

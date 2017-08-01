@@ -2,30 +2,27 @@ angular
   .module('afmPortal')
   .controller('UsersEditCtrl', UsersEditCtrl);
 
-UsersEditCtrl.$inject = ['User','$http', 'API', '$state', '$stateParams'];
-function UsersEditCtrl(User, $http, API, $state, $stateParams){
+UsersEditCtrl.$inject = ['$timeout','$resource','User','$http', 'API', '$state', '$stateParams'];
+function UsersEditCtrl($timeout, $resource, User, $http, API, $state, $stateParams){
   const vm = this;
 
-  usersShow();
-
-
-
-  function usersShow(){
-    vm.user = User.query()
-    console.log(vm.user);
-    return $http
-      .get(`${API}/users/${$stateParams.id}`)
-      .then(response => {
-        // vm.user = response.data;
-        // console.log(response.data);
-      });
-  }
+User
+    .show({id: $stateParams.id}).$promise
+    .then((data) => {
+      vm.user = data;
+      console.log(data);
+    }, err => {
+      console.log(err);
+    });
 
   vm.update = function usersUpdate(){
-    return $http
-      .put(`${API}/users/${vm.user._id}`, vm.user)
-      .then(() => {
-        $state.go('usersIndex');
-      });
+    User
+    .update(vm.user).$promise
+    .then((data) => {
+    vm.updated = true;
+      $timeout(function() {vm.updated = false;}, 1500);
+    }, err => {
+      console.log(err);
+    });
   };
 }

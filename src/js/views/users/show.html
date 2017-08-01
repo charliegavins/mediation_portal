@@ -1,5 +1,14 @@
-<h2>{{ usersShow.user.firstName }} {{ usersShow.user.lastName }}</h2>
-<h2>{{ usersShow.user.email }}</h2>
+<h2>{{ usersShow.user.title }} {{ usersShow.user.firstName }} {{ usersShow.user.lastName }}</h2>
+<p>Email: {{ usersShow.user.email }}</p>
+<p>Mobile: {{ usersShow.user.mobileTel }}</p>
+<p>Address: {{ usersShow.user.homeAddress }}</p>
+<p>Postcode: {{ usersShow.user.postcode }}</p>
+<p>Tel: {{ usersShow.user.otherTel }}</p>
+<p>Solicitor address: {{ usersShow.user.solicitorAddress }}</p>
+<p>Solicitor company name: {{ usersShow.user.solicitorCompanyName }}</p>
+<p>Solicitor email: {{ usersShow.user.solicitorEmail }}</p>
+<p>Solicitor name: {{ usersShow.user.solicitorName }}</p>
+<p>Solicitor telephone: {{ usersShow.user.solicitorTel }}</p>
 <hr>
-<button class="btn btn-primary" ui-sref="usersEdit({ id: users.user._id })">Edit</button>
-<button class="btn btn-warning" ng-click="users.delete()">Delete</button>
+<button class="btn btn-primary" ui-sref="usersEdit({ id: usersShow.user._id })">Edit</button>
+<button class="btn btn-warning" ui-sref="usersDelete({ id: usersShow.user._id })">Delete</button>

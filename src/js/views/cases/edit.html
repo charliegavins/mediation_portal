@@ -28,24 +28,27 @@
   <div class="form-group">
     <p>Has children?</p><input type="checkbox" class="form-control" id="children" ng-model="casesEdit.case.children" placeholder="Children">
   </div>
-  <div class="media" ng-repeat="child in casesEdit.case.childrenInfo">
+  <div class="media" ng-repeat="child in casesEdit.case.childrenInfo track by $index">
     <div class="media-body">
       <div class="form-group">
     <p>child {{$index+1}}</p>
       <div class="form-group">
-        <input type="text" class="form-control" id="partnerB" ng-model="child.firstName" placeholder="Partner B">
+        <input type="text" class="form-control" id="partnerB" ng-model="child.firstName" placeholder="First Name">
       </div>
         <div class="form-group">
       <input type="text" class="form-control" id="middleNames" ng-model="child.middleNames" placeholder="Middle Name(s)">
     </div>
       <div class="form-group">
-        <input type="text" class="form-control" id="lastName" ng-model="child.lastName" placeholder="Partner B">
+        <input type="text" class="form-control" id="lastName" ng-model="child.lastName" placeholder="Last Name">
       </div>
       <div class="form-group">
         <input type="date" class="form-control" id="DoB" ng-model="child.DoB" placeholder="Date of birth">
       </div>
+      <button ng-click="casesEdit.removeChild({$index})">remove</button>
     </div>
 </div>
 </div>
-  <p ng-if="casesEdit.updated">updated!</p><input type="submit" class="btn btn-primary" value="Update">
 </form>
+<button ng-click="casesEdit.addChildField()">Add child</button>
+  <p ng-if="casesEdit.updated">updated!</p>
+<button ng-click="casesEdit.update()">Update</button>
