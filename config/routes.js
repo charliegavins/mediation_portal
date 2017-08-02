@@ -24,5 +24,8 @@ router.route('/cases/:id')
   .get(cases.show)
   .put(cases.update)
   .delete(cases.delete);
+router.route('/upload')
+  .post(users.file);
+
 
 module.exports = router;

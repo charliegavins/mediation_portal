@@ -8,6 +8,7 @@ const app        = express();
 const config     = require('./config/config');
 const routes     = require('./config/routes');
 const dest       = `${__dirname}/public`;
+const multer     = require('multer');
 
 mongoose.connect(config.db);
 
@@ -16,6 +17,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(dest));
+app.use(multer({ dest: './uploads/'}).any());;
 
 app.use('/api', expressJWT({ secret: config.secret })
   .unless({

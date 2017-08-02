@@ -2,10 +2,17 @@ module.exports = {
   index: usersIndex,
   show: usersShow,
   update: usersUpdate,
-  delete: usersDelete
+  delete: usersDelete,
+  file: usersFile
 };
 
 const User = require('../models/user');
+
+function usersFile(req, res) {
+   console.log(req.files);
+   console.log('fart');
+   return res.status(200);
+}
 
 function usersIndex(req, res) {
   User
