@@ -56,6 +56,7 @@ function removeBlankChildren(){
     if (vm.case.childrenInfo[i].firstName == "" && vm.case.childrenInfo[i].lastName == "" && vm.case.childrenInfo[i].middleNames == ""){
       vm.case.childrenInfo.splice(i, 1);
       i = i-1;
+      console.log('ping');
     };
 };
 };

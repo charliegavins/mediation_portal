@@ -21,7 +21,8 @@
     "bootstrap": "^3.3.7",
     "angular-resource": "^1.6.5",
     "angular-touch": "^1.6.5",
-    "async": "^2.5.0"
+    "async": "^2.5.0",
+    "angular-file-upload": "^2.5.0"
   },
   "overrides": {
     "bootstrap": {

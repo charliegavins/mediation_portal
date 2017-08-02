@@ -36,10 +36,26 @@ const userSchema = new mongoose.Schema({
         pensionContributions: { type: Number },
         otherDeduction: { type: Number },
         totalDeductions: { type: Number },
-        netIncome: { type: Number }
+        netIncome: { type: Number },
+        p60: [{
+          path: { type: String },
+          added: { type: Date }}],
+        p11d: [{
+          path: { type: String },
+          added: { type: Date }}],
+        payslips: [{
+          path: { type: String },
+          added: { type: Date }}]
       },
       monthlyIncomeSelfEmp: {
-        drawings: { type: Number }
+        drawings: { type: Number },
+        selfAssessmentDocs: [{
+          path: { type: String },
+          added: { type: Date }}],
+        managementAccounts: [{
+          path: { type: String },
+          added: { type: Date }
+        }]
       },
       otherIncome: {
         childBenefit: { type: Number },
@@ -160,7 +176,15 @@ const userSchema = new mongoose.Schema({
         mortgageType2: { type: String },
         mortgagePenalties: { type: Number },
         salesCosts: { type: Number },
-        netEquity: { type: Number }
+        netEquity: { type: Number },
+        valuationDocs: [{
+          path: { type: String },
+          added: { type: Date }
+        }],
+        mortgageDocs: [{
+          path: { type: String },
+          added: { type: Date }
+        }]
       },
       otherProperty: [{
         address: { type: String },
@@ -177,7 +201,13 @@ const userSchema = new mongoose.Schema({
         mortgageType2: { type: String },
         mortgagePenalties: { type: Number },
         salesCosts: { type: Number },
-        netEquity: { type: Number }
+        netEquity: { type: Number },
+        valuationDocs: [{
+          path: { type: String },
+          added: { type: Date }}],
+        mortgageDocs: [{
+          path: { type: String },
+          added: { type: Date }}]
       }],
       savingsSchemes: [{
         nameOfCompany: { type: String },
@@ -189,13 +219,16 @@ const userSchema = new mongoose.Schema({
         surrTransFundVal: { type: Number },
         date: { type: Date }
       }],
-      savingsAccounts: [{
+      bankSocietySavingsAccounts: [{
         nameOfInstitution: { type: String },
         lastFourAcctDigits: { type: Number },
         typeOfAccount: { type: String },
         jointOrSole: { type: String },
         balance: { type: Number },
-        date: { type: Date }
+        date: { type: Date },
+        accountDocs: [{
+          path: { type: String },
+          added: { type: Date }}]
       }],
       stocksSharesEtc: [{
         nameOfHolding: { type: String },
@@ -203,7 +236,10 @@ const userSchema = new mongoose.Schema({
         numberSize: { type: Number },
         jointOrSole: { type: String },
         currentValue: { type: Number },
-        date: { type: Date }
+        date: { type: Date },
+        investmentDocs: [{
+          path: { type: String },
+          added: { type: Date }}]
       }],
       nationalSavingsCerts: [{
         nameOfIssue: { type: String },
@@ -211,14 +247,20 @@ const userSchema = new mongoose.Schema({
         numberSize: { type: Number },
         jointOrSole: { type: String },
         currentValue: { type: Number },
-        date: { type: Date }
+        date: { type: Date },
+        savingCertsDocs: [{
+          path: { type: String },
+          added: { type: Date }}]
       }],
       nationalSavingsBonds: [{
         typeOfBond: { type: String },
         bondholderNumber: { type: Number },
         jointOrSole: { type: String },
         currentValue: { type: Number },
-        date: { type: Date }
+        date: { type: Date },
+        bondsDocs: [{
+          path: { type: String },
+          added: { type: Date }}]
       }],
       insurancePolicies: [{
         nameOfCompany: { type: String },
@@ -227,7 +269,10 @@ const userSchema = new mongoose.Schema({
         lifeAssured: { type: Boolean },
         estMaturityValue: { type: Number },
         maturityDate: { type: Date },
-        surrenderValue: { type: Number}
+        surrenderValue: { type: Number},
+        insuranceDocs: [{
+          path: { type: String },
+          added: { type: Date }}]
       }],
       moneyOwedByOthers: [{
         description: { type: String },
@@ -255,7 +300,13 @@ const userSchema = new mongoose.Schema({
         description: { type: String },
         basisOfValuation: { type: String },
         outstandingAmountsDue: { type: String },
-        value: { type: Number }
+        value: { type: Number },
+        businessAccountsDocs: [{
+          path: { type: String },
+          added: { type: Date }}],
+        businessValueDocs: [{
+          path: { type: String },
+          added: { type: Date }}]
       }],
       otherAssets: [{
         typeOfAsset: { type: String },
@@ -278,7 +329,10 @@ const userSchema = new mongoose.Schema({
         schemeType: { type: String },
         dateCETVCalc: { type: String },
         status: { type: String},
-        value: { type: Number }
+        value: { type: Number },
+        pensionDocs: [{
+          path: { type: String },
+          added: { type: Date }}]
       }],
       pensionsTotal: { type: Number },
       newPartnerInfo: {

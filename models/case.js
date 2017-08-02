@@ -10,10 +10,11 @@ const caseSchema = new mongoose.Schema({
   dateOfSeparation: { type: String, trim: true },
   children: { type: Boolean},
   childrenInfo: [{
-    firstName: String,
-    lastName: String,
-    middleNames: String,
-    DoB: Date}]
+    firstName: { type: String},
+    lastName: { type: String},
+    middleNames: { type: String},
+    DoB: { type: Date}
+  }]
 },{
   timestamps: true
 });

@@ -2,8 +2,8 @@ angular
   .module('afmPortal')
   .controller('UsersEditCtrl', UsersEditCtrl);
 
-UsersEditCtrl.$inject = ['$timeout','$resource','User','$http', 'API', '$state', '$stateParams'];
-function UsersEditCtrl($timeout, $resource, User, $http, API, $state, $stateParams){
+UsersEditCtrl.$inject = ['$timeout','$resource','User','$http', 'API', '$state', '$stateParams','$upload'];
+function UsersEditCtrl($timeout, $resource, User, $http, API, $state, $stateParams, $upload){
   const vm = this;
 
 User
