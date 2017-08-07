@@ -10,6 +10,7 @@ const vm = this;
     .show({id: $stateParams.id}).$promise
     .then((data) => {
       vm.user = data;
+      console.log(data);
     }, err => {
       console.log(err);
     });

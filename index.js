@@ -17,7 +17,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(dest));
-app.use(multer({ dest: './uploads/'}).any());;
+app.use(multer({ dest: './uploads/'}).any());
 
 app.use('/api', expressJWT({ secret: config.secret })
   .unless({

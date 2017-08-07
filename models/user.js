@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
   case_ID: { type: String, trim: true },
   financialInfo: {
     income: {
-      selfEmployed: { type: Boolean},
+      active: { type: Boolean},
       occupation: { type: String},
       employer: { type: String },
       monthlyIncomeEmployed: {
@@ -48,6 +48,7 @@ const userSchema = new mongoose.Schema({
           added: { type: Date }}]
       },
       monthlyIncomeSelfEmp: {
+        active: { type: Boolean},
         drawings: { type: Number },
         selfAssessmentDocs: [{
           path: { type: String },
@@ -162,6 +163,7 @@ const userSchema = new mongoose.Schema({
       },
     assetsAndLiabilities: {
       familyHome: {
+        active: { type: Boolean},
         address: { type: String },
         dateOfPurchase: { type: Date },
         jointSoleOwnership: { type: String },
@@ -187,6 +189,7 @@ const userSchema = new mongoose.Schema({
         }]
       },
       otherProperty: [{
+        active: { type: Boolean},
         address: { type: String },
         dateOfPurchase: { type: Date },
         jointSoleOwnership: { type: String },
@@ -210,6 +213,7 @@ const userSchema = new mongoose.Schema({
           added: { type: Date }}]
       }],
       savingsSchemes: [{
+        active: { type: Boolean},
         nameOfCompany: { type: String },
         typeOfScheme: { type: String },
         jointOrSole: { type: String },
@@ -217,9 +221,13 @@ const userSchema = new mongoose.Schema({
         maturityValue: { type: Number },
         sumAssured: { type: Number },
         surrTransFundVal: { type: Number },
-        date: { type: Date }
+        date: { type: Date },
+        schemeDocs: [{
+          path: { type: String },
+          added: { type: Date }}]
       }],
       bankSocietySavingsAccounts: [{
+        active: { type: Boolean},
         nameOfInstitution: { type: String },
         lastFourAcctDigits: { type: Number },
         typeOfAccount: { type: String },
@@ -231,6 +239,7 @@ const userSchema = new mongoose.Schema({
           added: { type: Date }}]
       }],
       stocksSharesEtc: [{
+        active: { type: Boolean},
         nameOfHolding: { type: String },
         typeOfHolding: { type: Number },
         numberSize: { type: Number },
@@ -242,6 +251,7 @@ const userSchema = new mongoose.Schema({
           added: { type: Date }}]
       }],
       nationalSavingsCerts: [{
+        active: { type: Boolean},
         nameOfIssue: { type: String },
         typeOfHolding: { type: String },
         numberSize: { type: Number },
@@ -253,6 +263,7 @@ const userSchema = new mongoose.Schema({
           added: { type: Date }}]
       }],
       nationalSavingsBonds: [{
+        active: { type: Boolean},
         typeOfBond: { type: String },
         bondholderNumber: { type: Number },
         jointOrSole: { type: String },
@@ -263,6 +274,7 @@ const userSchema = new mongoose.Schema({
           added: { type: Date }}]
       }],
       insurancePolicies: [{
+        active: { type: Boolean},
         nameOfCompany: { type: String },
         policyNumber: { type: Number },
         policyType: { type: String },
@@ -275,27 +287,32 @@ const userSchema = new mongoose.Schema({
           added: { type: Date }}]
       }],
       moneyOwedByOthers: [{
+        active: { type: Boolean},
         description: { type: String },
         jointOrSole: { type: String },
         amount: { type: Number }
       }],
       cash: [{
+        active: { type: Boolean},
         location: { type: String },
         jointOrSole: { type: String },
         amount: { type: Number },
         currency: { type: String }
       }],
       vehicles: [{
+        active: { type: Boolean},
         description: { type: String },
         jointOrSole: { type: String },
         value: { type: Number }
       }],
       valuables: [{
+        active: { type: Boolean},
         description: { type: String },
         jointOrSole: { type: String },
         value: { type: Number }
       }],
       businessInterests: [{
+        active: { type: Boolean},
         nameOfCompany: { type: String },
         description: { type: String },
         basisOfValuation: { type: String },
@@ -309,19 +326,23 @@ const userSchema = new mongoose.Schema({
           added: { type: Date }}]
       }],
       otherAssets: [{
+        active: { type: Boolean},
         typeOfAsset: { type: String },
         value: { type: Number }
       }],
       liabilities: [{
+        active: { type: Boolean},
         description: { type: String },
         owedPersonCompany: { type: String },
         value: { type: Number }
       }],
       capitalGainsTax: [{
+        active: { type: Boolean},
         asset: { type: String },
         tax: { type: Number }
       }],
       pensions: [{
+        active: { type: Boolean},
         name: { type: String },
         address: { type: String },
         nationalInsuranceNumber: { type: String },
@@ -336,6 +357,7 @@ const userSchema = new mongoose.Schema({
       }],
       pensionsTotal: { type: Number },
       newPartnerInfo: {
+        active: { type: Boolean},
         annualIncome: [{
           natureOfIncome: { type: String },
           value: { type: Number },

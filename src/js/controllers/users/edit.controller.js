@@ -2,14 +2,16 @@ angular
   .module('afmPortal')
   .controller('UsersEditCtrl', UsersEditCtrl);
 
-UsersEditCtrl.$inject = ['$timeout','$resource','User','$http', 'API', '$state', '$stateParams','FileUploader', 'TokenService'];
-function UsersEditCtrl($timeout, $resource, User, $http, API, $state, $stateParams, FileUploader, TokenService){
+UsersEditCtrl.$inject = ['$timeout','$resource','User','$http', 'API', '$state', '$stateParams','FileUploader', 'TokenService', 'CurrentUserService'];
+function UsersEditCtrl($timeout, $resource, User, $http, API, $state, $stateParams, FileUploader, TokenService, CurrentUserService){
   const vm = this;
   const token = TokenService.getToken();
+  const currentUser = CurrentUserService.currentUser;
   var uploader = vm.uploader = new FileUploader({
       url: `${API}/upload`,
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`,
+        '_ID': `${currentUser._id}`
       }
   });
 
