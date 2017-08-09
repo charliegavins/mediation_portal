@@ -47,9 +47,21 @@ function Router($stateProvider, $locationProvider, $urlRouterProvider){
   controller: 'UsersShowCtrl',
   controllerAs: 'usersShow'
 })
+.state('usersFinance', {
+  url: '/users/:id/finance',
+  templateUrl: '/js/views/users/finance.html',
+  controller: 'UsersShowCtrl',
+  controllerAs: 'usersShow'
+})
 .state('usersEdit', {
   url: '/users/:id/edit',
   templateUrl: '/js/views/users/edit.html',
+  controller: 'UsersEditCtrl',
+  controllerAs: 'usersEdit'
+})
+.state('usersFinanceEdit', {
+  url: '/users/:id/finance/edit',
+  templateUrl: '/js/views/users/financeEdit.html',
   controller: 'UsersEditCtrl',
   controllerAs: 'usersEdit'
 })

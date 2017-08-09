@@ -7,10 +7,16 @@ module.exports = {
 };
 
 const User = require('../models/user');
+const fs   = require('fs');
 
 function usersFile(req, res) {
-   console.log(req.files);
-   console.log('fart');
+  let dir = `./uploads/${req.headers._id}/`;
+  if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+};
+   fs.rename(`${req.files[0].path}`, `./uploads/${req.headers._id}/${req.files[0].filename}`, function(err) {
+     if (err) console.log(err);
+   });
    return res.status(200);
 }
 
@@ -39,6 +45,7 @@ function usersUpdate(req, res) {
   User.findByIdAndUpdate(req.params.id, req.body, { new: true },  (err, user) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     if (!user) return res.status(404).json({ message: 'User not found.' });
+    console.log(user);
     return res.status(200).json({message: 'user updated', user: user});
   });
 }

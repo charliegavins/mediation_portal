@@ -1,0 +1,584 @@
+<h2>Edit Financial Information</h2>
+<form ng-submit="usersEdit.update()" class="col-md-6">
+  <div class="form-group">
+    <input type="checkbox" class="form-control" id="active" ng-model="usersEdit.user.financialInfo.income.monthlyIncomeEmployed.active">
+    <p>Employed</p>
+  </div>
+  <div ng-if="usersEdit.user.financialInfo.income.monthlyIncomeEmployed.active">
+    <div class="form-group">
+      Occupation <input type="text" class="form-control" id="occupation" ng-model="usersEdit.user.financialInfo.income.occupation" placeholder="Occupation">
+    </div>
+    <div class="form-group">
+      Employer <input type="text" class="form-control" id="employer" ng-model="usersEdit.user.financialInfo.income.employer" placeholder="Employer">
+    </div>
+    <h5>Income</h5>
+    <div class="form-group">
+      <div class="formField">
+        <p>Gross Salary</p>
+      </div><span class="input-group-addon">£</span><input type="number" class="form-control currency" id="salaryGross" ng-model="usersEdit.user.financialInfo.income.monthlyIncomeEmployed.salaryGross" placeholder="Gross Salary"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Other Earnings</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="otherEarnings" ng-model="usersEdit.user.financialInfo.income.otherEarnings" placeholder="Other Earnings"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Overtime, Bonus or Comission</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="overTimeBonusComission" ng-model="usersEdit.user.financialInfo.income.overTimeBonusComission" placeholder="Overtime, Bonus or Comission"><span class="input-group-addon">.00</span>
+    </div>
+    <h5>Deductions</h5>
+    <div class="form-group">
+      <div class="formField">
+        <p>National Insurance</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="nationalInsurance" ng-model="usersEdit.user.financialInfo.income.nationalInsurance" placeholder="National Insurance"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Income Tax</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="incomeTax" ng-model="usersEdit.user.financialInfo.income.incomeTax" placeholder="Income Tax"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Pension Contributions</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="pensionContributions" ng-model="usersEdit.user.financialInfo.income.pensionContributions" placeholder="Pension Contributions"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Other Deduction</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="otherDeduction" ng-model="usersEdit.user.financialInfo.income.otherDeduction" placeholder="Other Deduction"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Total Deductions</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="totalDeductions" ng-model="usersEdit.user.financialInfo.income.totalDeductions" placeholder="Total Deductions"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Net Income</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="netIncome" ng-model="usersEdit.user.financialInfo.income.netIncome" placeholder="Net Income"><span class="input-group-addon">.00</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="checkbox" class="form-control" id="active" ng-model="usersEdit.user.financialInfo.income.monthlyIncomeSelfEmp.active">
+    <p>Self-Employed</p>
+  </div>
+  <div ng-if="usersEdit.user.financialInfo.income.monthlyIncomeSelfEmp.active">
+    <div class="form-group">
+      <div class="formField">
+        <p>Drawings</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="drawings" ng-model="usersEdit.user.financialInfo.income.monthlyIncomeSelfEmp.drawings" placeholder="Drawings"><span class="input-group-addon">.00</span>
+    </div>
+</div>
+  <div class="form-group">
+    <input type="checkbox" class="form-control" id="active" ng-model="usersEdit.user.financialInfo.income.otherIncome.active">
+    <p>Other Income</p>
+  </div>
+  <div ng-if="usersEdit.user.financialInfo.income.otherIncome.active">
+    <div class="form-group">
+      <div class="formField">
+        <p>Child Benefit</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="childBenefit" ng-model="usersEdit.user.financialInfo.income.otherIncome.childBenefit" placeholder="Child Benefit"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Working Tax Credit</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="workingTaxCredit" ng-model="usersEdit.user.financialInfo.income.otherIncome.workingTaxCredit" placeholder="Working Tax Credit"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Child Tax Credit</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="childTaxCredit" ng-model="usersEdit.user.financialInfo.income.otherIncome.childTaxCredit" placeholder="Child Tax Credit"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Dividends and Interest</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="dividendsAndInterest" ng-model="usersEdit.user.financialInfo.income.otherIncome.dividendsAndInterest" placeholder="Dividends and Interest"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Property Income</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="propertyIncome" ng-model="usersEdit.user.financialInfo.income.otherIncome.propertyIncome" placeholder="Property Income"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Trusts, Shares and/or Pension</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="trustsSharesPension" ng-model="usersEdit.user.financialInfo.income.otherIncome.trustsSharesPension" placeholder="Trusts, Shares and/or Pension"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Misc Income</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="miscIncome" ng-model="usersEdit.user.financialInfo.income.otherIncome.miscIncome" placeholder="Misc Income"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Total Other Income</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="totalOtherIncome" ng-model="usersEdit.user.financialInfo.income.otherIncome.totalOtherIncome" placeholder="Total Other Income"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Likely Tax</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="likelyTax" ng-model="usersEdit.user.financialInfo.income.otherIncome.likelyTax" placeholder="Likely Tax"><span class="input-group-addon">.00</span>
+    </div>
+</div>
+    <p>Total Net Income: {{usersEdit.user.financialInfo.income.totalNetIncome}}</p>
+
+<h3>Expenditure</h3>
+<h4>Accomodation</h4>
+<div class="form-group">
+  <div class="formField">
+    <p>Mortgage or Rent</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="mortgageRent" ng-model="usersEdit.user.financialInfo.expenditure.accomodation.mortgageRent" placeholder="Mortgage or Rent"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Pension Premium</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="pensionPremium" ng-model="usersEdit.user.financialInfo.expenditure.accomodation.pensionPremium" placeholder="Pension Premium"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Building/Contents Insurance</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="buildingContentsInsurance" ng-model="usersEdit.user.financialInfo.expenditure.accomodation.buildingContentsInsurance" placeholder="Building/Contents Insurance"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Building Maintenance</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="buildingMaintenance" ng-model="usersEdit.user.financialInfo.expenditure.accomodation.buildingMaintenance" placeholder="Building Maintenance"><span class="input-group-addon">.00</span>
+</div>
+<h4>Financial Commitments</h4>
+<div class="form-group">
+  <div class="formField">
+    <p>Bank Loan Repayments</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="bankLoanRepayments" ng-model="usersEdit.user.financialInfo.expenditure.financial.bankLoanRepayments" placeholder="Bank Loan Repayments"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>HP & Finance Houses</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="hpFinanceHouses" ng-model="usersEdit.user.financialInfo.expenditure.financial.hpFinanceHouses" placeholder="HP & Finance Houses"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Clubs & Mail Order Catalogues</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="clubsMailOrderCatalogues" ng-model="usersEdit.user.financialInfo.expenditure.financial.clubsMailOrderCatalogues" placeholder="Clubs & Mail Order Catalogues"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Credit Cards & Store Cards</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="creditStoreCards" ng-model="usersEdit.user.financialInfo.expenditure.financial.creditStoreCards" placeholder="Credit Cards & Store Cards"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Additional Pension Contributions (not included in income)</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="additionalPensionContributions" ng-model="usersEdit.user.financialInfo.expenditure.financial.additionalPensionContributions" placeholder="Additional Pension Contributions"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>***Other Insurance, premiums (e.g. medical, life - please specify)</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="otherInsurance" ng-model="usersEdit.user.financialInfo.expenditure.financial.otherInsurance" placeholder="Other Insurance"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Any Investments or Regular Savings</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="investmentsSavings" ng-model="usersEdit.user.financialInfo.expenditure.financial.investmentsSavings" placeholder="Any Investments or Regular Savings"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Maintenance to Previous Partner</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="maintenance" ng-model="usersEdit.user.financialInfo.expenditure.financial.maintenance" placeholder="Maintenance to Previous Partner"><span class="input-group-addon">.00</span>
+</div>
+    <p>Total: {{usersEdit.user.financialInfo.expenditure.financial.total}}</p>
+<div class="form-group">
+<div class="formField">
+<h3>Utilities</h3>
+<div class="form-group">
+  <div class="formField">
+    <p>Council Tax</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="councilTax" ng-model="usersEdit.user.financialInfo.expenditure.utilities.councilTax" placeholder="Council Tax"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Water/Sewage Rates</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="waterSewage" ng-model="usersEdit.user.financialInfo.expenditure.utilities.waterSewage" placeholder="Water/Sewage Rates"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Gas/Oil/Solid Fuel</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="gasOilFuel" ng-model="usersEdit.user.financialInfo.expenditure.utilities.gasOilFuel" placeholder="Gas/Oil/Solid Fuel"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Electricity</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="electricity" ng-model="usersEdit.user.financialInfo.expenditure.utilities.electricity" placeholder="Electricity"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Telephone</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="telephone" ng-model="usersEdit.user.financialInfo.expenditure.utilities.telephone" placeholder="Telephone"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Mobile Phone</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="mobilePhone" ng-model="usersEdit.user.financialInfo.expenditure.utilities.mobilePhone" placeholder="Mobile Phone"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>TV License</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="tvLicense" ng-model="usersEdit.user.financialInfo.expenditure.utilities.tvLicense" placeholder="TV License"><span class="input-group-addon">.00</span>
+</div>
+    <p>Total: {{usersEdit.user.financialInfo.expenditure.utilities.total}}</p>
+<h3>Transport</h3>
+<div class="form-group">
+  <div class="formField">
+    <p>Vehicle Repayments</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="vehicleRepayments" ng-model="usersEdit.user.financialInfo.expenditure.transport.vehicleRepayments" placeholder="Vehicle Repayments"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Insurance/Road Tax</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="insuranceRoadTax" ng-model="usersEdit.user.financialInfo.expenditure.transport.insuranceRoadTax" placeholder="Insurance/Road Tax"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Servicing/Repairs & MOT</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="serviceRepairsMOT" ng-model="usersEdit.user.financialInfo.expenditure.transport.serviceRepairsMOT" placeholder="Servicing/Repairs & MOT"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Breakdown Cover</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="breakdownCover" ng-model="usersEdit.user.financialInfo.expenditure.transport.breakdownCover" placeholder="Breakdown Cover"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Petrol & Parking</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="petrolParking" ng-model="usersEdit.user.financialInfo.expenditure.transport.petrolParking" placeholder="Petrol & Parking"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Public Transport</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="publicTransport" ng-model="usersEdit.user.financialInfo.expenditure.transport.publicTransport" placeholder="Public Transport"><span class="input-group-addon">.00</span>
+</div>
+    <p>Total: {{usersEdit.user.financialInfo.expenditure.transport.total}}</p>
+<h3>Household Expenses</h3>
+<div class="form-group">
+  <div class="formField">
+    <p>Food/Milk/General House</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="foodMilkGeneral" ng-model="usersEdit.user.financialInfo.expenditure.householdExpenses.foodMilkGeneral" placeholder="Food/Milk/General House"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Vet Bills Etc</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="vetBills" ng-model="usersEdit.user.financialInfo.expenditure.householdExpenses.vetBills" placeholder="Vet Bills Etc"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Cleaner, Gardener, Window Cleaner</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="cleanerGardenWindow" ng-model="usersEdit.user.financialInfo.expenditure.householdExpenses.cleanerGardenWindow" placeholder="Cleaner, Gardener, Window Cleaner"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Dry Cleaning/Laundry/Shoe Repairs</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="laundryClothesShoesRepairs" ng-model="usersEdit.user.financialInfo.expenditure.householdExpenses.laundryClothesShoesRepairs" placeholder="Dry Cleaning/Laundry/Shoe Repairs"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>TV/Video recorder Rental</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="tvRental" ng-model="usersEdit.user.financialInfo.expenditure.householdExpenses.tvRental" placeholder="TV/Video recorder Rental"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Satellite/Cable/Internet Subscriptions</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="satCableWebSubscription" ng-model="usersEdit.user.financialInfo.expenditure.householdExpenses.satCableWebSubscription" placeholder="Satellite/Cable/Internet Subscriptions"><span class="input-group-addon">.00</span>
+</div>
+    <p>Total: {{usersEdit.user.financialInfo.expenditure.householdExpenses.total}}</p>
+<h3>Personal Expenses</h3>
+<div class="form-group">
+  <div class="formField">
+    <p>Clothes</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="clothes" ng-model="usersEdit.user.financialInfo.expenditure.personalExpenses.clothes" placeholder="Clothes"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Hair, Toiletaries & Cosmetics</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="hairToiletariesCosmetics" ng-model="usersEdit.user.financialInfo.expenditure.personalExpenses.hairToiletariesCosmetics" placeholder="Hair, Toiletaries & Cosmetics"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Newspapers & Magazines</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="newsMagazines" ng-model="usersEdit.user.financialInfo.expenditure.personalExpenses.newsMagazines" placeholder="Newspapers & Magazines"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Dental / Optician</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="dentalOptician" ng-model="usersEdit.user.financialInfo.expenditure.personalExpenses.dentalOptician" placeholder="Dental / Optician"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Other Health</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="otherHealth" ng-model="usersEdit.user.financialInfo.expenditure.personalExpenses.otherHealth" placeholder="Other Health"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Tobacco & Alcohol</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="tobaccoAlcohol" ng-model="usersEdit.user.financialInfo.expenditure.personalExpenses.tobaccoAlcohol" placeholder="Tobacco & Alcohol"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Meals at Work</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="workMeals" ng-model="usersEdit.user.financialInfo.expenditure.personalExpenses.workMeals" placeholder="Meals at Work"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Presents (Christmas/Birthdays etc)</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="presents" ng-model="usersEdit.user.financialInfo.expenditure.personalExpenses.presents" placeholder="Presents (Christmas/Birthdays etc)"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Charitable Giving</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="charity" ng-model="usersEdit.user.financialInfo.expenditure.personalExpenses.charity" placeholder="Charitable Giving"><span class="input-group-addon">.00</span>
+</div>
+<div class="form-group">
+  <div class="formField">
+    <p>Stationary & Postage</p>
+  </div>
+  <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="stationaryPostage" ng-model="usersEdit.user.financialInfo.expenditure.personalExpenses.stationaryPostage" placeholder="Stationary & Postage"><span class="input-group-addon">.00</span>
+</div>
+    <p>Total: {{usersEdit.user.financialInfo.expenditure.personalExpenses.total}}</p>
+    <h3>Recreation</h3>
+    <div class="form-group">
+      <div class="formField">
+        <p>Holidays & Outings</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="holidaysOutings" ng-model="usersEdit.user.financialInfo.expenditure.recreationalExpenses.holidaysOutings" placeholder="Holidays & Outings"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Sports & Hobbies</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="sportsHobbies" ng-model="usersEdit.user.financialInfo.expenditure.recreationalExpenses.sportsHobbies" placeholder="Sports & Hobbies"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Cinema, Theartre, Concerts and Videos</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="cinemaTheatreConcertsVideo" ng-model="usersEdit.user.financialInfo.expenditure.recreationalExpenses.cinemaTheatreConcertsVideo" placeholder="Cinema, Theartre, Concerts and Videos"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Meals Out & Entertaining</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="mealsOutEntertaining" ng-model="usersEdit.user.financialInfo.expenditure.recreationalExpenses.mealsOutEntertaining" placeholder="Meals Out & Entertaining"><span class="input-group-addon">.00</span>
+    </div>
+    <p>Total: {{usersEdit.user.financialInfo.expenditure.recreationalExpenses.total}}</p>
+    <p>Expenditure Total: {{usersEdit.user.financialInfo.expenditureTotal}}</p>
+    <h3>Children's Expenses</h3>
+    <h4>Child Care</h4>
+    <div class="form-group">
+      <div class="formField">
+        <p>Babysitting</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="babysitting" ng-model="usersEdit.user.financialInfo.childExpenditure.babysitting" placeholder="Babysitting"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Nursery / Playgroup</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="nurseryPlaygroup" ng-model="usersEdit.user.financialInfo.childExpenditure.nurseryPlaygroup" placeholder="Nursery / Playgroup"><span class="input-group-addon">.00</span>
+    </div>
+    <div class="form-group">
+      <div class="formField">
+        <p>Childminder / Nanny</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="childminderNanny" ng-model="usersEdit.user.financialInfo.childExpenditure.childminderNanny" placeholder="Childminder / Nanny"><span class="input-group-addon">.00</span>
+    </div>
+    <p>Total: {{usersEdit.user.financialInfo.childExpenditure.recreation.clothesShoes}}</p>
+    <h4>Recreation</h4>
+    <div class="form-group">
+      <div class="formField">
+        <p>Clothes & Shoes</p>
+      </div>
+      <span class="input-group-addon">£</span><input type="number" class="form-control currency" id="clothesShoes" ng-model="usersEdit.user.financialInfo.childExpenditure.clothesShoes" placeholder="Clothes & Shoes"><span class="input-group-addon">.00</span>
+    </div>
+    <p>Total: {{usersEdit.user.financialInfo.childExpenditure.childCare.total}}</p>
+
+
+
+
+
+
+  <div class="form-group">
+    <input type="text" class="form-control" id="name" ng-model="usersEdit.user.firstName" placeholder="First Name">
+  </div>
+  <div class="form-group">
+    <input type="eventImage" class="form-control" id="eventImage" ng-model="usersEdit.user.lastName" placeholder="Last Name">
+  </div>
+  <div class="form-group">
+    <input type="middleNames" class="form-control" id="middleNames" ng-model="usersEdit.user.middleNames" placeholder="Middle Name(s)">
+  </div>
+  <div class="form-group">
+    <input type="date" class="form-control" id="DoB" ng-model="usersEdit.user.DoB" placeholder="Date of birth">
+  </div>
+  <div class="form-group">
+    <input type="address" class="form-control" id="homeAddress" ng-model="usersEdit.user.homeAddress" placeholder="Home Address">
+  </div>
+  <div class="form-group">
+    <input type="postcode" class="form-control" id="postcode" ng-model="usersEdit.user.postcode" placeholder="Postcode">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="mobileNumber" ng-model="usersEdit.user.mobileTel" placeholder="Mobile number">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="otherTel" ng-model="usersEdit.user.otherTel" placeholder="Additional number">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="email" name="email" ng-model="usersEdit.user.email" placeholder="Email">
+  </div>
+  <div class="form-group">
+    Has solicitor? <input class="form-control" type="checkbox" name="hasSolicitor" ng-model="usersEdit.user.hasSolicitor" placeholder="hasSolicitor">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="Solicitor Name" ng-model="usersEdit.user.solicitorName" placeholder="Solicitor ANme">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="hasSolicitor" ng-model="usersEdit.user.solicitorAddress" placeholder="Solicitor Address">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="Solicitor Company Name" ng-model="usersEdit.user.solicitorCompanyName" placeholder="Solicitor Company Name">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="Solicitor Email" ng-model="usersEdit.user.solicitorEmail" placeholder="Solicitor Email">
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="Solicitor Tel" ng-model="usersEdit.user.solicitorTel" placeholder="Solicitor Tel">
+  </div>
+  <p ng-if="usersEdit.updated">updated!</p>
+  <input type="submit" class="btn btn-primary" value="Update">
+</form>
+Multiple
+<input type="file" nv-file-select="" uploader="usersEdit.uploader" multiple  /><br/>
+Single
+             <input type="file" nv-file-select="" uploader="usersEdit.uploader" />
+
+
+<div class="col-md-9" style="margin-bottom: 40px">
+
+                  <h3>Upload queue</h3>
+                  <p>Queue length: {{ uploader.queue.length }}</p>
+
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th width="50%">Name</th>
+                              <th ng-show="usersEdit.uploader.isHTML5">Size</th>
+                              <th ng-show="usersEdit.uploader.isHTML5">Progress</th>
+                              <th>Status</th>
+                              <th>Actions</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr ng-repeat="item in usersEdit.uploader.queue">
+                              <td><strong>{{ item.file.name }}</strong></td>
+                              <td ng-show="usersEdit.uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                              <td ng-show="usersEdit.uploader.isHTML5">
+                                  <div class="progress" style="margin-bottom: 0;">
+                                      <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                  </div>
+                              </td>
+                              <td class="text-center">
+                                  <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                                  <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                  <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                              </td>
+                              <td nowrap>
+                                  <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                      <span class="glyphicon glyphicon-upload"></span> Upload
+                                  </button>
+                                  <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                      <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                                  </button>
+                                  <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                      <span class="glyphicon glyphicon-trash"></span> Remove
+                                  </button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+
+                  <div>
+                      <div>
+                          Queue progress:
+                          <div class="progress" style="">
+                              <div class="progress-bar" role="progressbar" ng-style="{ 'width': usersEdit.uploader.progress + '%' }"></div>
+                          </div>
+                      </div>
+                      <button type="button" class="btn btn-success btn-s" ng-click="usersEdit.uploader.uploadAll()" ng-disabled="!usersEdit.uploader.getNotUploadedItems().length">
+                          <span class="glyphicon glyphicon-upload"></span> Upload all
+                      </button>
+                      <button type="button" class="btn btn-warning btn-s" ng-click="usersEdit.uploader.cancelAll()" ng-disabled="!usersEdit.uploader.isUploading">
+                          <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
+                      </button>
+                      <button type="button" class="btn btn-danger btn-s" ng-click="usersEdit.uploader.clearQueue()" ng-disabled="!usersEdit.uploader.queue.length">
+                          <span class="glyphicon glyphicon-trash"></span> Remove all
+                      </button>
+                  </div>
+
+              </div>
+
+          </div>
