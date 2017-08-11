@@ -3,7 +3,7 @@ const bcrypt    = require('bcrypt');
 const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
-  title: { type: String, trim: true},
+  title: { type: String, trim: true, alias: "fart"},
   firstName: { type: String, trim: true },
   lastName: { type: String, trim: true },
   middleNames: { type: String, trim: true },
@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, trim: true, required: true },
   passwordHash: { type: String, required: true },
   hasSolicitor: { type: Boolean },
-  solicitorName: { type: String, trim: true },
+  solicitorName: { type: String, trim: true, alias: 'Solicitor\'s Name' },
   solicitorCompanyName: { type: String, trim: true },
   solicitorEmail: { type: String, trim: true },
   solicitorTel: { type: String, trim: true },
@@ -24,13 +24,13 @@ const userSchema = new mongoose.Schema({
   case_ID: { type: String, trim: true },
   financialInfo: {
     income: {
-      occupation: { type: String},
+      occupation: { type: String },
       employer: { type: String },
       monthlyIncomeEmployed: {
         active: { type: Boolean},
-        salaryGross: { type: Number },
-        otherEarnings: { type: Number },
-        overTimeBonusComission: { type: Number },
+        salaryGross: { type: Number, alias: 'Gross Salary' },
+        otherEarnings: { type: Number, alias: 'Other Earnings' },
+        overTimeBonusComission: { type: Number, alias: 'Overtime, Bonus And Comission' },
         nationalInsurance: { type: Number },
         incomeTax: { type: Number },
         pensionContributions: { type: Number },
@@ -73,6 +73,7 @@ const userSchema = new mongoose.Schema({
       totalNetIncome: { type: Number },
     },
     expenditure: {
+      active: { type: Boolean},
       accomodation:{
         mortgageRent: { type: Number },
         pensionPremium: { type: Number },

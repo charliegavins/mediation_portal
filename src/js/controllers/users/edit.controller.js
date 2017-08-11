@@ -23,7 +23,6 @@ function UsersEditCtrl($timeout, $resource, User, $http, API, $state, $statePara
   uploader.filters.push({
       name: 'syncFilter',
       fn: function(item /*{File|FileLikeObject}*/, options) {
-          console.log('syncFilter');
           return this.queue.length < 10;
       }
   });
@@ -80,6 +79,7 @@ User
     .then((data) => {
       vm.user = data;
       console.log(data);
+      console.log(data.solicitorName);
     }, err => {
       console.log(err);
     });
