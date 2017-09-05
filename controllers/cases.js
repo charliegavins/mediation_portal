@@ -11,7 +11,7 @@ const Case = require('../models/case');
 function casesIndex(req, res) {
   Case
   .find({})
-  .populate(['partnerA', 'partnerB'])
+  .populate('partnerA partnerB mediator')
   .exec((err, cases) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     return res.status(200).json(cases);
@@ -20,7 +20,7 @@ function casesIndex(req, res) {
 
 function casesShow(req, res) {
   Case.findById(req.params.id)
-  .populate(['partnerA', 'partnerB'])
+  .populate('partnerA partnerB mediator')
   .exec((err, cases) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     if (!cases) return res.status(404).json({ message: 'Case  not found.' });

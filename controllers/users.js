@@ -6,8 +6,8 @@ module.exports = {
   file: usersFile
 };
 
-const User = require('../models/user');
-const fs   = require('fs');
+const user = require('../models/user');
+const fs      = require('fs');
 
 function usersFile(req, res) {
   let dir = `./uploads/${req.headers._id}/`;
@@ -21,7 +21,7 @@ function usersFile(req, res) {
 }
 
 function usersIndex(req, res) {
-  User
+  user
   .find({})
   .populate('case_ID')
   .exec((err, users) => {
@@ -31,29 +31,29 @@ function usersIndex(req, res) {
 }
 
 function usersShow(req, res) {
-  User
+  user
   .findById(req.params.id)
   .populate('case_ID')
   .exec((err, user) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
-    if (!user) return res.status(404).json({ message: 'User not found.' });
+    if (!user) return res.status(404).json({ message: 'user not found.' });
     return res.status(200).json(user);
   });
 }
 
 function usersUpdate(req, res) {
-  User.findByIdAndUpdate(req.params.id, req.body, { new: true },  (err, user) => {
+  user.findByIdAndUpdate(req.params.id, req.body, { new: true },  (err, user) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
-    if (!user) return res.status(404).json({ message: 'User not found.' });
+    if (!user) return res.status(404).json({ message: 'user not found.' });
     console.log(user);
     return res.status(200).json({message: 'user updated', user: user});
   });
 }
 
 function usersDelete(req, res) {
-  User.findByIdAndRemove(req.params.id, (err, user) => {
+  user.findByIdAndRemove(req.params.id, (err, user) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
-    if (!user) return res.status(404).json({ message: 'User not found.' });
+    if (!user) return res.status(404).json({ message: 'user not found.' });
     return res.sendStatus(204);
   });
 }

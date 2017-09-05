@@ -3,7 +3,7 @@ const bcrypt    = require('bcrypt');
 const validator = require('validator');
 
 const userSchema = new mongoose.Schema({
-  title: { type: String, trim: true, alias: "fart"},
+  title: { type: String, trim: true },
   firstName: { type: String, trim: true },
   lastName: { type: String, trim: true },
   middleNames: { type: String, trim: true },
@@ -358,7 +358,7 @@ const userSchema = new mongoose.Schema({
           added: { type: Date }}]
       }],
       pensionsTotal: { type: Number },
-      newPartnerInfo: {
+      newUserInfo: {
         active: { type: Boolean},
         annualIncome: [{
           natureOfIncome: { type: String },

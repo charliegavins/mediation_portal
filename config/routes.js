@@ -1,9 +1,11 @@
 const express  = require('express');
 const router   = express.Router();
 
-const authentications = require('../controllers/authentications');
-const users           = require('../controllers/users');
-const cases           = require('../controllers/cases');
+const authentications      = require('../controllers/authentications');
+const users                = require('../controllers/users');
+const cases                = require('../controllers/cases');
+const mediators                = require('../controllers/mediators');
+const docgen               = require('../controllers/docgen');
 
 router.route('/register')
   .post(authentications.register);
@@ -24,8 +26,21 @@ router.route('/cases/:id')
   .get(cases.show)
   .put(cases.update)
   .delete(cases.delete);
+
+router.route('/mediators')
+  .get(mediators.index)
+  .post(mediators.new);
+router.route('/mediators/:id')
+  .get(mediators.show)
+  .put(mediators.update)
+  .delete(mediators.delete);
+
+
 router.route('/upload')
   .post(users.file);
+
+router.route('/generatedocument/:id')
+  .get(docgen.gen);
 
 
 module.exports = router;
