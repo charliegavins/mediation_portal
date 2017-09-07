@@ -55,7 +55,6 @@ function dataFormatCheck(mou){
       console.log(mou[i]);
     }
   };
-  console.log(mou);
   return mou;
 }
 

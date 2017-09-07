@@ -42,5 +42,8 @@ router.route('/upload')
 router.route('/generatedocument/:id')
   .get(docgen.gen);
 
+router.route('/parseexcel/')
+  .get(exceldata.parse);
+
 
 module.exports = router;
