@@ -5,7 +5,8 @@ const authentications      = require('../controllers/authentications');
 const users                = require('../controllers/users');
 const cases                = require('../controllers/cases');
 const mediators                = require('../controllers/mediators');
-const docgen               = require('../controllers/docgen');
+const docGen               = require('../controllers/docgen');
+const excelData               = require('../controllers/exceldata');
 
 router.route('/register')
   .post(authentications.register);
@@ -40,10 +41,10 @@ router.route('/upload')
   .post(users.file);
 
 router.route('/generatedocument/:id')
-  .get(docgen.gen);
+  .get(docGen.gen);
 
-router.route('/parseexcel/')
-  .get(exceldata.parse);
+router.route('/parseexcel/:id')
+  .put(cases.parse);
 
 
 module.exports = router;

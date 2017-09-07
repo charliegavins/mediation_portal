@@ -17,6 +17,8 @@ function gen(req, res) {
     mou = {
       FIRST_NAME_A: data.partnerA.firstName,
       LAST_NAME_A: data.partnerA.lastName,
+      DOB_A: data.partnerA.DoB,
+      DOB_B: data.partnerB.DoB,
       FIRST_NAME_B: data.partnerB.firstName,
       LAST_NAME_B: data.partnerB.lastName,
       MEDIATOR_FIRST_NAME: data.mediator.firstName,
@@ -26,7 +28,21 @@ function gen(req, res) {
       LEGAL_ADVICE: data.legalAdvice,
       DATE_MARRIED: data.dateOfMarriage,
       DATE_COHABITED: data.dateOfCohabitation,
-      DATE_SEPARATED: data.dateOfSeparation
+      DATE_SEPARATED: data.dateOfSeparation,
+      PENSIONS_A: data.MoUFinance.pensions.partnerA,
+      PENSIONS_B: data.MoUFinance.pensions.partnerB,
+      OTHER_ASSETS_A: data.MoUFinance.otherAssets.partnerA,
+      OTHER_ASSETS_B: data.MoUFinance.otherAssets.partnerB,
+      BUSINESS_ASSETS_A: data.MoUFinance.businessAssets.partnerA,
+      BUSINESS_ASSETS_B: data.MoUFinance.businessAssets.partnerB,
+      LIABILITIES_A: data.MoUFinance.liabilities.partnerA,
+      LIABILITIES_B: data.MoUFinance.liabilities.partnerB,
+      PERSONAL_ASSETS_A: data.MoUFinance.personalAssets.partnerA,
+      PERSONAL_ASSETS_B: data.MoUFinance.personalAssets.partnerB,
+      OTHER_PROPERTY_A: data.MoUFinance.otherProperty.partnerA,
+      OTHER_PROPERTY_B: data.MoUFinance.otherProperty.partnerB,
+      FAMILY_HOME_A: data.MoUFinance.familyHome.partnerA,
+      FAMILY_HOME_A: data.MoUFinance.familyHome.partnerB,
     };
     mouProcessed = dataFormatCheck(mou);
     docgen(mouProcessed, res);
@@ -69,15 +85,36 @@ function docgen(data, res){
   let doc = new Docxtemplater();
   doc.loadZip(zip);
 
+//CAN WE ES6 this so it's just { LEGAL_ADVICE, FIRST_NAME_A etc?}
   doc.setData({
-    partner_A_first_name: data.FIRST_NAME_A,
-    partner_A_last_name: data.LAST_NAME_A,
-    partner_B_first_name: data.FIRST_NAME_B,
-    partner_B_last_name: data.LAST_NAME_B,
-    mediator_first_name: data.MEDIATOR_FIRST_NAME,
-    number_of_sessions: data.NUMBER_OF_SESSIONS,
-    date_of_mediation_start: data.DATE_OF_MEDIATION_START,
-    date_of_mediation_end: data.DATE_OF_MEDIATION_END
+    LEGAL_ADVICE: data.LEGAL_ADVICE,
+    FIRST_NAME_A: data.FIRST_NAME_A,
+    LAST_NAME_A: data.LAST_NAME_A,
+    FIRST_NAME_B: data.FIRST_NAME_B,
+    LAST_NAME_B: data.LAST_NAME_B,
+    MEDIATOR_FIRST_NAME: data.MEDIATOR_FIRST_NAME,
+    NUMBER_OF_SESSIONS: data.NUMBER_OF_SESSIONS,
+    DATE_OF_MEDIATION_START: data.DATE_OF_MEDIATION_START,
+    DATE_OF_MEDIATION_END: data.DATE_OF_MEDIATION_END,
+    DATE_MARRIED: data.DATE_MARRIED,
+    DATE_COHABITED: data.DATE_COHABITED,
+    DATE_SEPARATED: data.DATE_SEPARATED,
+    PENSIONS_A: data.PENSIONS_A,
+    PENSIONS_B: data.PENSIONS_B,
+    OTHER_ASSETS_A: data.OTHER_ASSETS_A,
+    OTHER_ASSETS_B: data.OTHER_ASSETS_B,
+    BUSINESS_ASSETS_A: data.BUSINESS_ASSETS_A,
+    BUSINESS_ASSETS_B: data.BUSINESS_ASSETS_B,
+    LIABILITIES_A: data.LIABILITIES_A,
+    LIABILITIES_B: data.LIABILITIES_B,
+    PERSONAL_ASSETS_A: data.PERSONAL_ASSETS_A,
+    PERSONAL_ASSETS_B: data.PERSONAL_ASSETS_B,
+    OTHER_PROPERTY_A: data.OTHER_PROPERTY_A,
+    OTHER_PROPERTY_B: data.OTHER_PROPERTY_B,
+    FAMILY_HOME_A: data.FAMILY_HOME_A,
+    FAMILY_HOME_B: data.FAMILY_HOME_B,
+    DOB_A: data.DOB_A,
+    DOB_B: data.DOB_B
   });
 
 

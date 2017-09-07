@@ -12,6 +12,36 @@ const caseSchema = new mongoose.Schema({
   dateOfMarriage: { type: Date, trim: true },
   dateOfCohabitation: { type: String, trim: true },
   dateOfSeparation: { type: String, trim: true },
+  MoUFinance: {
+    familyHome: {
+      partnerA: { type: Number, trim: true },
+      partnerB: { type: Number, trim: true }
+    },
+    otherProperty: {
+      partnerA: { type: Number, trim: true },
+      partnerB: { type: Number, trim: true }
+    },
+    personalAssets: {
+      partnerA: { type: Number, trim: true },
+      partnerB: { type: Number, trim: true }
+    },
+    liabilities: {
+      partnerA: { type: Number, trim: true },
+      partnerB: { type: Number, trim: true }
+    },
+    businessAssets: {
+      partnerA: { type: Number, trim: true },
+      partnerB: { type: Number, trim: true }
+    },
+    otherAssets: {
+      partnerA: { type: Number, trim: true },
+      partnerB: { type: Number, trim: true }
+    },
+    pensions: {
+      partnerA: { type: Number, trim: true },
+      partnerB: { type: Number, trim: true }
+    }
+  },
   children: { type: Boolean},
   childrenInfo: [{
     firstName: { type: String},
