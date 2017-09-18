@@ -3,5 +3,6 @@ angular
     "ui.router",
     "ngResource",
     "angular-jwt",
-    "angularFileUpload"
+    "angularFileUpload",
+    "excel"
   ]);

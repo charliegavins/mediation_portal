@@ -9,6 +9,7 @@ const config     = require('./config/config');
 const routes     = require('./config/routes');
 const dest       = `${__dirname}/public`;
 const multer     = require('multer');
+require("babel-core/register");
 
 mongoose.connect(config.db);
 

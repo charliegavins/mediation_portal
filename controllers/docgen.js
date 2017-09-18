@@ -8,6 +8,7 @@ const _             = require('lodash');
 
 const Case = require('../models/case');
 
+//get the requested case from the database, populating all referenced records and assign the data to new constant variables.
 function gen(req, res) {
   Case
   .findOne({ caseID: req.params.id })
@@ -15,12 +16,16 @@ function gen(req, res) {
   .exec((err, data) => {
     if (err) return res.status(500).json({ message: 'Something went wrong.' });
     mou = {
+      TITLE_A: data.partnerA.title,
+      TITLE_B: data.partnerB.title,
       FIRST_NAME_A: data.partnerA.firstName,
       LAST_NAME_A: data.partnerA.lastName,
-      DOB_A: data.partnerA.DoB,
-      DOB_B: data.partnerB.DoB,
       FIRST_NAME_B: data.partnerB.firstName,
       LAST_NAME_B: data.partnerB.lastName,
+      DOB_A: data.partnerA.DoB,
+      DOB_B: data.partnerB.DoB,
+      OCCUPATION_A: data.partnerA.financialInfo.income.occupation,
+      OCCUPATION_B: data.partnerB.financialInfo.income.occupation,
       MEDIATOR_FIRST_NAME: data.mediator.firstName,
       NUMBER_OF_SESSIONS: `${converter.toWords(data.numberOfSessions)} (${data.numberOfSessions})`,
       DATE_OF_MEDIATION_START: data.mediationStart,
@@ -42,20 +47,114 @@ function gen(req, res) {
       OTHER_PROPERTY_A: data.MoUFinance.otherProperty.partnerA,
       OTHER_PROPERTY_B: data.MoUFinance.otherProperty.partnerB,
       FAMILY_HOME_A: data.MoUFinance.familyHome.partnerA,
-      FAMILY_HOME_A: data.MoUFinance.familyHome.partnerB,
+      FAMILY_HOME_B: data.MoUFinance.familyHome.partnerB,
+      NUMBER_OF_CHILDREN:
+`${converter.toWords(data.childrenInfo.length)} (${data.childrenInfo.length})`,
+      NEW_PARTNER_A: data.partnerA.backgroundInfo.newPartner,
+      NEW_PARTNER_B: data.partnerB.backgroundInfo.newPartner,
+      NEW_PARTNER_COHBITING_A: data.partnerA.backgroundInfo.cohabiting,
+      NEW_PARTNER_COHBITING_B: data.partnerB.backgroundInfo.cohabiting,
+      NEW_PARTNER_REMARRIED_A: data.partnerA.backgroundInfo.remarried,
+      NEW_PARTNER_REMARRIED_B: data.partnerB.backgroundInfo.remarried,
+      NEW_PARTNER_REMARRIAGE_INTENDED_A: data.partnerA.backgroundInfo.remarriageIntended,
+      NEW_PARTNER_REMARRIAGE_INTENDED_B: data.partnerB.backgroundInfo.remarriageIntended,
+      GOOD_HEALTH_A: data.partnerA.backgroundInfo.health.inGoodHealth,
+      GOOD_HEALTH_B: data.partnerB.backgroundInfo.health.inGoodHealth,
+      GOOD_HEALTH_DESCRIPTION_A: data.partnerA.backgroundInfo.health.descriptionIfFalse,
+      GOOD_HEALTH_DESCRIPTION_B: data.partnerB.backgroundInfo.health.descriptionIfFalse
     };
-    mouProcessed = dataFormatCheck(mou);
-    docgen(mouProcessed, res);
+    async function textGen(data){
+      mouBackground = await backgroundInfoGeneration(data);
+      mouProcessed = await dataFormatCheck(mouBackground);
+      docgen(mouProcessed, res);
+    };
   });
 }
 
+//this takes the title from the database and assigns a gender for the paragraph generation
+function titleGenderConversion(title, type){
+  if ((title = 'Mr') && (type != 'posses')){
+    return 'he'
+  }
+  if ((title = 'Mrs') && (type != 'posses')){
+    return 'she'
+  }
+  if ((title = 'Ms') && (type != 'posses')){
+    return 'she'
+  }
+  if ((title = 'Mr') && (type = 'posses')){
+    return 'his'
+  }
+  if ((title = 'Mrs') && (type = 'posses')){
+    return 'her'
+  }
+  if ((title = 'Ms') && (type = 'posses')){
+    return 'her'
+  }
+
+}
+
+
+
+function backgroundInfoGeneration(data){
+  // if (data.NUMBER_OF_CHILDREN = 0 || data.NUMBER_OF_CHILDREN = NULL){
+  //   data.NUMBER_OF_CHILDREN = 'no';
+  // }
+  // if (data.NUMBER_OF_CHILDREN > 0){
+  //   data.CHILDREN_INFO =
+  // }
+  if (data.LEGAL_ADVICE == false){
+    data.LEGAL_ADVICE = `We have both been informed of the importance of obtaining legal advice during mediation and have decided not to take legal advice before implementing these proposals`;
+  };
+  if (data.LEGAL_ADVICE == true){
+    data.LEGAL_ADVICE = `We have both been informed of the importance of obtaining legal advice during mediation and have decided to take legal advice to assist in implementing these proposals`;
+  };
+  if (data.GOOD_HEALTH_A && data.GOOD_HEALTH_B == true){
+    data.too_Grammar = `too`;
+  };
+  if (data.NEW_PARTNER_A == false ){
+    data.NEW_PARTNER_A = `does not have a new partner`;
+  };
+  if (data.NEW_PARTNER_A == true){
+    data.NEW_PARTNER_A = `has a new partner`;
+  };
+  if (data.NEW_PARTNER_B == false){
+    data.NEW_PARTNER_B = `does not have a new partner`;
+  };
+  if (data.NEW_PARTNER_B == true){
+    data.NEW_PARTNER_B = `has a new partner`;
+  };
+  if (data.GOOD_HEALTH_A = true){
+    data.GOOD_HEALTH_A = `is in good health`;
+  };
+  if (data.GOOD_HEALTH_B = true){
+    data.GOOD_HEALTH_B = `is in good health`;
+  };
+  if (data.NEW_PARTNER_COHABITING_A == true){
+    data.NEW_PARTNER_COHABITING_A = `is cohabiting with the new partner`
+  };
+  if (data.NEW_PARTNER_COHABITING_A == false){
+    data.NEW_PARTNER_COHABITING_A = `is not cohabiting with the new partner`
+  };
+  if (data.NEW_PARTNER_REMARRIED_A == true){
+    data.NEW_PARTNER_REMARRIED_A = `and has subsequently married`
+  };
+  if (data.NEW_PARTNER_REMARRIAGE_INTENDED_A == true){
+    data.BACKGROUND_INFO_FULL_STOP = '. ';
+    data.NEW_PARTNER_REMARRIAGE_INTENDED_A = `and is intending to get married`
+  };
+  data.BACKGROUND_INFO_A = `${titleGenderConversion(data.TITLE_A)} ${data.GOOD_HEALTH_A} and ${data.NEW_PARTNER_A}`;
+  data.BACKGROUND_INFO_B = `${titleGenderConversion(data.TITLE_B)} ${data.too_Grammar} ${data.GOOD_HEALTH_B} and ${data.NEW_PARTNER_B}`;
+  return data
+};
+
 function dateParser(date){
   return moment(date).format('Do MMMM YYYY');
-}
+};
 
 function capitalise(string){
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
+};
 
 function dataFormatCheck(mou){
   for (var i in mou){
@@ -68,11 +167,13 @@ function dataFormatCheck(mou){
     }
     if (_.isDate(value)){
       mou[i] = dateParser(value);
-      console.log(mou[i]);
+    }
+    if (_.isNumber(value)){
+      mou[i] = _.round((value), 2);
     }
   };
   return mou;
-}
+};
 
 function docgen(data, res){
 
@@ -87,6 +188,8 @@ function docgen(data, res){
 
 //CAN WE ES6 this so it's just { LEGAL_ADVICE, FIRST_NAME_A etc?}
   doc.setData({
+    OCCUPATION_A: data.OCCUPATION_A,
+    OCCUPATION_B: data.OCCUPATION_B,
     LEGAL_ADVICE: data.LEGAL_ADVICE,
     FIRST_NAME_A: data.FIRST_NAME_A,
     LAST_NAME_A: data.LAST_NAME_A,
@@ -114,7 +217,11 @@ function docgen(data, res){
     FAMILY_HOME_A: data.FAMILY_HOME_A,
     FAMILY_HOME_B: data.FAMILY_HOME_B,
     DOB_A: data.DOB_A,
-    DOB_B: data.DOB_B
+    DOB_B: data.DOB_B,
+    NUMBER_OF_CHILDREN: data.NUMBER_OF_CHILDREN,
+    BACKGROUND_INFO_A: data.BACKGROUND_INFO_A,
+    BACKGROUND_INFO_B: data.BACKGROUND_INFO_B
+
   });
 
 

@@ -12,6 +12,7 @@ const caseSchema = new mongoose.Schema({
   dateOfMarriage: { type: Date, trim: true },
   dateOfCohabitation: { type: String, trim: true },
   dateOfSeparation: { type: String, trim: true },
+  legalAdvice: { type: Boolean},
   MoUFinance: {
     familyHome: {
       partnerA: { type: Number, trim: true },
@@ -47,7 +48,9 @@ const caseSchema = new mongoose.Schema({
     firstName: { type: String},
     lastName: { type: String},
     middleNames: { type: String},
-    DoB: { type: Date}
+    DoB: { type: Date},
+    goodHealth: { type: Boolean},
+    localSchool: { type: Boolean}
   }]
 },{
   timestamps: true

@@ -21,6 +21,16 @@ const userSchema = new mongoose.Schema({
   solicitorTel: { type: String, trim: true },
   solicitorAddress: { type: String, trim: true },
   activeCase: { type: Boolean },
+  backgroundInfo: {
+    newPartner: { type: Boolean},
+    cohabiting: { type: Boolean},
+    remarried: { type: Boolean},
+    remarriageIntended: { type: Boolean},
+    health: {
+      inGoodHealth: { type: Boolean },
+      descriptionIfFalse: { type: String }
+    }
+  },
   case_ID: { type: String, trim: true },
   financialInfo: {
     income: {
